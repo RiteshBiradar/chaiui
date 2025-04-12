@@ -1,5 +1,7 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
+
+
 /**
  * Shared layout configurations
  *
@@ -11,15 +13,27 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <svg
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-label="Logo"
-        >
-          <circle cx={12} cy={12} r={12} fill="currentColor" />
-        </svg>
-        My App
+        <div className="flex items-center gap-2">
+          {/* Light mode logo */}
+          <img
+            src="/assets/images/logos/white-mode-logo-w-text.png"
+            alt="Logo"
+            width={80}
+            height={14}
+            className="block dark:hidden"
+          />
+  
+          {/* Dark mode logo */}
+          <img
+            src="/assets/images/logos/dark-mode-logo-w-text.png"
+            alt="Logo"
+            width={80}
+            height={14}
+            className="hidden dark:block"
+          />
+  
+          
+        </div>
       </>
     ),
   },

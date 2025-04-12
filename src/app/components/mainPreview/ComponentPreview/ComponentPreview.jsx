@@ -30,12 +30,12 @@ export function ComponentPreview({ code, children }) {
   return (
     <div className="border overflow-hidden  rounded-xl bg-muted/30 p-4 space-y-4">
       <div className="flex items-center justify-between">
-        <div className="flex gap-2">
+        <div className="flex gap-2 text-black dark:text-white">
           <button
             className={getButtonClass(!showCode ? "default" : "outline")}
             onClick={() => setShowCode(false)}>
-            <Eye className="w-4 h-4 mr-1" />
-            Preview
+            <Eye className="w-4 h-4 mr-1 dark:text-white text-black" />
+            <span className="text-black dark:text-white"> Preview</span>
           </button>
           <button
             className={getButtonClass(showCode ? "default" : "outline")}

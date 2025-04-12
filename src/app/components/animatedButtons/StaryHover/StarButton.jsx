@@ -1,3 +1,4 @@
+import "./staryhover.css"
 const StarButton = () => {
   return (
     <button className="relative px-8 py-5 bg-white text-black text-lg font-semibold rounded-full border-none shadow-[0_0_10px_rgb(255,255,255)] transition-all duration-300 ease-in-out hover:bg-black hover:text-white hover:shadow-[0_0_80px_#ffffff8c] cursor-pointer">

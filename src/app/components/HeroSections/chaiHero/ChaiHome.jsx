@@ -9,7 +9,7 @@ const Home = () => {
       <motion.div
         initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 4, ease: "easeIn" }}
+        transition={{ duration: 2, ease: "easeIn" }}
         className=" flex flex-col items-center relative z-10">
         <h1 className="text-xl mb-8 tracking-widest dark:text-white">
           Sweet, Minimalistic & Snacky
@@ -35,9 +35,6 @@ const Home = () => {
         {/* random testing  */}
 
         {/* random testing  */}
-        <h1 className="text-xl tracking-widest dark:text-white">
-          take a sip of our componenet’s
-        </h1>
 
         <div>
           {/* get the button component  */}
@@ -48,7 +45,7 @@ const Home = () => {
       <motion.div
         initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 6, ease: "easeIn" }}
+        transition={{ duration: 3, ease: "easeIn" }}
         className="absolute w-full h-[70%] top-[40%]">
         <WaveAnimation />
       </motion.div>
