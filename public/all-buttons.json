@@ -1,6 +1,6 @@
 {
     "name": "all-buttons",
-    "category": "registry:component",
+    "type": "registry:component",
     "files": [
       {
         "name": "src/components/allButtonsPage/AllButtons.jsx",
