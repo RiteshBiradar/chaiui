@@ -1,89 +1,63 @@
 export const buttonCode = `
-import { stagger, useAnimate, animate } from "framer-motion";
-import "../../../app/global.css";
+// in components/ui/basicButton.tsx
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+import clsx from "clsx";
 
-function randomNumberBetween(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function ButtonOne() {
-  const [scope, animateFn] = useAnimate();
-
-  const onButtonClick = () => {
-    const sparkles = Array.from({ length: 20 });
-    const sparklesAnimation = sparkles.map((_, index) => [
-      \`.sparkle-\${index}\`,
-      {
-        x: randomNumberBetween(-100, 100),
-        y: randomNumberBetween(-100, 100),
-        scale: randomNumberBetween(1.5, 2.5),
-        opacity: 1,
+// 1. Define variants using cva
+const buttonVariants = cva(
+  "px-4 cursor-pointer text-white font-bold rounded-lg shadow-md transition transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl",
+  {
+    variants: {
+      variant: {
+        default: "bg-gray-600",
+        destructive: "bg-[#ED0800]",
+        primary: "bg-teal-600",
+        yellow:"bg-[#ffbd03]",
+        chai:"bg-[#Ab784E]",
+        lavender:"bg-[#a881af]",
+        purple:"bg-[#80669d]",
+        teal:"bg-[#5adbb5]",
+        green:"bg-[#33b249]",
+        sky:"bg-[#55c2da]",
+        blue:"bg-[#5783db]",
+        facebook:"bg-[#4681f4]",
+        stroke:"bg-none border border-gray-800"
       },
-      { duration: 0.4, at: "<" },
-    ]);
-    const sparklesFadeOut = sparkles.map((_, index) => [
-      \`.sparkle-\${index}\`,
-      { opacity: 0, scale: 0 },
-      { duration: 0.3, at: "<" },
-    ]);
-    const sparklesReset = sparkles.map((_, index) => [
-      \`.sparkle-\${index}\`,
-      { x: 0, y: 0 },
-      { duration: 0.000001 },
-    ]);
+      size: {
+        sdot:"h-5 w-5",
+        dot:"h-10 w-10",
+        sm:"h-6 w-12",
+        m:"h-10 w-20",
+        default: "h-12 w-42",
+        xl: "h-12 w-62",
+        
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
-    animateFn([
-      ...sparklesReset,
-      [".letter", { y: -32 }, { duration: 0.2, delay: stagger(0.05) }],
-      ["button", { scale: 0.8 }, { duration: 0.1, at: "<" }],
-      ["button", { scale: 1 }, { duration: 0.1 }],
-      ...sparklesAnimation,
-      [".letter", { y: 0 }, { duration: 0.000001 }],
-      ...sparklesFadeOut,
-    ]);
-  };
+// 2. Define props type using VariantProps + button props
+type AllButtonsProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants>;
 
+// 3. Create a reusable button
+export default function Buttos({
+  variant,
+  size,
+  className,
+  ...props
+}: AllButtonsProps) {
   return (
-    <div ref={scope}>
-      <button
-        onClick={onButtonClick}
-        className="relative rounded-full border-2 border-blue-600 px-6 py-2 text-2xl text-blue-600 transition-colors hover:bg-blue-100"
-      >
-        <span className="sr-only">Motion</span>
-        <span className="block h-8 overflow-hidden" aria-hidden>
-          {["C", "l", "i", "c", "k"].map((letter, index) => (
-            <span
-              data-letter={letter}
-              className="letter relative inline-block h-8 leading-8 after:absolute after:left-0 after:top-full after:h-8 after:content-[attr(data-letter)]"
-              key={\`\${letter}-\${index}\`}
-            >
-              {letter}
-            </span>
-          ))}
-        </span>
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 block"
-        >
-          {Array.from({ length: 20 }).map((_, index) => (
-            <svg
-              key={index}
-              className={\`absolute left-1/2 top-1/2 opacity-0 sparkle-\${index}\`}
-              viewBox="0 0 122 117"
-              width="10"
-              height="10"
-            >
-              <path
-                className="fill-blue-600"
-                d="M64.39,2,80.11,38.76,120,42.33a3.2,3.2,0,0,1,1.83,5.59h0L91.64,74.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L61.44,96.19,27.09,116.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L1.09,47.92A3.2,3.2,0,0,1,3,42.32l39.74-3.56L58.49,2a3.2,3.2,0,0,1,5.9,0Z"
-              />
-            </svg>
-          ))}
-        </span>
-      </button>
-    </div>
+    <button
+      {...props}
+      className={twMerge(clsx(buttonVariants({ variant, size }), className))}
+    />
   );
 }
-
-export default ButtonOne;
 `;
