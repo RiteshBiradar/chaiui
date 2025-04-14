@@ -1,12 +1,13 @@
 ---
-title: Basic Button
-description: Your first document
+title: Basic Buttons
+description: A simple, customizable button component with support for variants, sizes, and states like hover and disabled — perfect for any UI.
 ---
 
 import AllButtons from "../../../src/app/components/AllButtonsPage/AllButtons"
 import SizesButton from "../../../src/app/components/AllButtonsPage/SizesButton"
 import RoundedButton from "../../../src/app/components/AllButtonsPage/RoundedButton.jsx"
 import DisabledButton from "../../../src/app/components/AllButtonsPage/DisabledButton.jsx"
+import HoverButton from "../../../src/app/components/AllButtonsPage/HoverButtons.jsx"
 
 {/* priview code  */}
 import {ComponentPreview} from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
@@ -35,7 +36,9 @@ This prop lets you define the text content of the component, typically used for 
 
 ## Hover
 Enables hover effects on the component. You can customize the hover state to define interactions when the component is hovered over.
-
+<ComponentPreview code={buttonCode}>
+  <HoverButton/>
+</ComponentPreview>
 
 ## Disabled
 When set to `true`, this prop disables the component, preventing user interaction and visually indicating its inactive state.
@@ -173,8 +176,9 @@ The `Button` component accepts the following props to customize its appearance a
 | `variant`  | `string`   | Defines the button's color theme.        | `"destructive"`, `"primary"`, `"yellow"`, `"chai"`, `"lavender"`, `"purple"`, `"teal"`, `"green"`, `"sky"`, `"blue"`, `"facebook"`, `"stroke"` |
 | `size`     | `string`   | Sets the button size.                    | `"sdot"`, `"dot"`, `"sm"`, `"m"`, `"xl"`                                            |
 | `rounded`  | `string`   | Controls the border-radius shape.        | `"circle"`, `"medium"`, `"low"`, `"rectangle"`, `"small"`                            |
-| `hover`    | `string`   | Sets the hover interaction effect.       | `"float"`, `"shadow"`, `"slide"`, `"ring"`                                          |
-| `disabled` | `boolean`  | Disables the button if `true`.           | `true`, `false`   
+| `hover`    | `string`   | Sets the hover interaction effect.       | `"float"`, `"rotate"`, `"slide"`,`shadow`, `"ring"`                                          |
+| `hover`    | `string`   | Sets the hover interaction effect.       | `"float"`, `"rotate"`, `"slide"`,`shadow`, `"ring"`                                          |
+| `className` | `string`  | custom className effects           | `className="string"`,   
 
 
 {/* | `text`     | `string`   | Defines the text size inside the button. | `"sm"`, `"m"`, `"l"`, `"xl"`, `"xxl"`                                               |                                                                 | */}

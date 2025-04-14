@@ -4,21 +4,21 @@ import Button from "../../../../registry/ui/buttons/basicButton";
 const DisabledButton = () => {
   return (
     <div className="flex justify-center items-center gap-4  flex-wrap">
-      <Button variant="chai" rounded="circle" disabled>
+      <Button variant="chai" rounded="circle" disabled="true">
         chai
       </Button>
-      <Button variant="yellow" disabled>
+      <Button variant="yellow" disabled="true">
         chai
       </Button>
-      <Button rounded="medium" disabled>
-        chai
-      </Button>
-
-      <Button variant="chai" rounded="rectangle" disabled>
+      <Button rounded="medium" disabled="true">
         chai
       </Button>
 
-      <Button variant="destructive" rounded="small" disabled>
+      <Button variant="chai" rounded="rectangle" disabled="true">
+        chai
+      </Button>
+
+      <Button variant="destructive" rounded="small" disabled="true">
         chai
       </Button>
     </div>

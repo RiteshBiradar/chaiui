@@ -41,9 +41,13 @@ const buttonVariants = cva(
       },
       hover:{
         float:"transition transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl",
-        shadow:"",
-        slide:"",
-        ring:""
+        rotate:"transition-transform duration-500 hover:rotate-6 ",
+        slide:"hover:transition-transform hover:duration-500 hover:bg-white hover:text-black",
+        shadow:"bg-gray-800 text-white px-4 py-2 rounded-md transition-all duration-200 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)] active:translate-y-0 active:shadow-[0_4px_10px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:text-white dark:hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)]",
+        ring:"bg-gray-800 text-white px-4 py-2 rounded-md transition duration-300 hover:ring-4 hover:ring-gray-100 dark:bg-gray-700 dark:text-white dark:hover:ring-gray-800"
+      },
+      disabled:{
+        true:"cursor-not-allowed hover:opacity-50 ",  
       }
     },
     defaultVariants: {
@@ -60,18 +64,20 @@ type AllButtonsProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
 // 3. Create a reusable button
-export default function Buttos({
+export default function Buttons({
   variant,
   size,
   rounded,
   hover,
+  disabled,
   className,
+
   ...props
 }: AllButtonsProps) {
   return (
     <button
       {...props}
-      className={twMerge(clsx(buttonVariants({ variant, size,rounded , hover }), className))}
+      className={twMerge(clsx(buttonVariants({ variant, size,rounded , hover,disabled }), className))}
     />
   );
 }
