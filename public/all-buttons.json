@@ -1,10 +1,12 @@
 {
     "name": "all-buttons",
     "type": "registry:component",
+
     "files": [
       {
-        "name": "components/allButtonsPage/AllButtons.jsx",
-        "content": "import React from \"react\";\nimport { cva } from \"class-variance-authority\";\nimport { twMerge } from \"tailwind-merge\";\nimport clsx from \"clsx\";\n\nconst buttonVariants = cva(\n  \"px-8 py-3 cursor-pointer text-white font-bold rounded-lg shadow-md transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-xl\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-gray-600\",\n        destructive: \"bg-red-800\",\n        primary: \"bg-teal-600\"\n      },\n      size: {\n        default: \"h-12\",\n        md: \"h-24\",\n        lg: \"h-53\"\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\"\n    }\n  }\n);\n\nexport const buttonVariants = buttonVariants;\n\nexport default function AllButtons({ variant, size, className, ...props }) {\n  return (\n    <button\n      {...props}\n      className={twMerge(clsx(buttonVariants({ variant, size }), className))}\n    />\n  );\n}"
+        "type":"registry:block",
+        "content": "import React from \"react\";\nimport { cva } from \"class-variance-authority\";\nimport { twMerge } from \"tailwind-merge\";\nimport clsx from \"clsx\";\n\nconst buttonVariants = cva(\n  \"px-8 py-3 cursor-pointer text-white font-bold rounded-lg shadow-md transition transform duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-xl\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-gray-600\",\n        destructive: \"bg-red-800\",\n        primary: \"bg-teal-600\"\n      },\n      size: {\n        default: \"h-12\",\n        md: \"h-24\",\n        lg: \"h-53\"\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\"\n    }\n  }\n);\n\nexport const buttonVariants = buttonVariants;\n\nexport default function AllButtons({ variant, size, className, ...props }) {\n  return (\n    <button\n      {...props}\n      className={twMerge(clsx(buttonVariants({ variant, size }), className))}\n    />\n  );\n}",
+        "target": "components/allButtonsPage/AllButtons.jsx"
       }
     ]
   }
