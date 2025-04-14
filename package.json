@@ -9,6 +9,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@eslint/config-array": "^0.20.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fumadocs-core": "15.2.6",
@@ -28,7 +29,7 @@
     "@types/node": "22.14.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
-    "eslint": "^8",
+    "eslint": "^9.24.0",
     "eslint-config-next": "15.2.4",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.3",
