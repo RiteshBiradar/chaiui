@@ -4,21 +4,18 @@ import Button from "../../../../registry/ui/buttons/basicButton";
 const SizesButton = () => {
   return (
     <div className="flex justify-center items-center gap-4  flex-wrap">
-      <Button size="sdot" variant="chai">
+      <Button variant="chai" rounded="circle">
         chai
       </Button>
-      <Button size="sm" variant="yellow">
-        chai
-      </Button>
-      <Button size="m"> chai</Button>
+      <Button variant="yellow">chai</Button>
+      <Button rounded="medium"> chai</Button>
 
-      <Button size="dot" variant="chai">
+      <Button variant="chai" rounded="rectangle">
         chai
       </Button>
 
-      <Button variant="destructive"> chai</Button>
-
-      <Button size="xl" variant="primary">
+      <Button variant="destructive" rounded="small">
+        {" "}
         chai
       </Button>
     </div>

@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 // 1. Define variants using cva
 const buttonVariants = cva(
-  "px-4 cursor-pointer text-white font-bold rounded-lg shadow-md transition transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl",
+  " cursor-pointer text-white font-bold shadow-md",
   {
     variants: {
       variant: {
@@ -24,18 +24,33 @@ const buttonVariants = cva(
         stroke:"bg-none border border-gray-800"
       },
       size: {
-        sdot:"h-5 w-5",
-        dot:"h-10 w-10",
-        sm:"h-6 w-12",
-        m:"h-10 w-20",
-        default: "h-12 w-42",
-        xl: "h-12 w-62",
+        sdot:"h-8 w-8 text-[8px]",
+        dot:"h-15 w-15 text-[15px]",
+        sm:"h-6 w-12 text-[12px]",
+        m:"h-10 w-20 text-[15px]",
+        default: "h-12 w-42 text-[20px]",
+        xl: "h-12 w-62 text-[24px]",
         
       },
+      rounded:{
+        circle:"rounded-full",
+        medium:"rounded-md",
+        low:"rounded-lg",
+        rectangle:"rounded-none",
+        small:"rounded-sm"
+      },
+      hover:{
+        float:"transition transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl",
+        shadow:"",
+        slide:"",
+        ring:""
+      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      rounded:"low",
+      hover:"float"
     },
   }
 );
@@ -48,13 +63,15 @@ type AllButtonsProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 export default function Buttos({
   variant,
   size,
+  rounded,
+  hover,
   className,
   ...props
 }: AllButtonsProps) {
   return (
     <button
       {...props}
-      className={twMerge(clsx(buttonVariants({ variant, size }), className))}
+      className={twMerge(clsx(buttonVariants({ variant, size,rounded , hover }), className))}
     />
   );
 }
