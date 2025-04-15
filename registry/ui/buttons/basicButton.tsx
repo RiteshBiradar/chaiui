@@ -60,7 +60,7 @@ type AllButtonsProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
 // 3. Create a reusable button
-export default function Buttos({
+export default function Buttons({
   variant,
   size,
   rounded,

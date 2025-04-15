@@ -1,0 +1,151 @@
+---
+title: Login Card
+description: A beautifully designed login card component with form handling and button styling.
+---
+
+import Login from "../../../src/app/components/Cards/login"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { loginCardCode } from "../../codeWrittenText/cards/loginCard"
+
+## Overview
+
+The `Login` card component is a responsive and styled UI element for handling user authentication. It features:
+
+- Email and Password fields  
+- Remember Me checkbox  
+- A CTA button (uses our customizable `Button` component)  
+- Smooth transitions and hover effects
+
+<ComponentPreview code={loginCardCode}>
+  <Login />
+</ComponentPreview>
+
+---
+
+## CLI Installation
+
+Make sure ShadCN and the custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/registry/login-card.json
+```
+---
+
+## Manual Installation
+
+To manually set up the `Login` component in your project, follow these steps:
+
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/loginCard`.
+3. Inside the `loginCard` folder, create a file named `login.tsx`.
+4. Paste the following code into `login.tsx`.
+
+```tsx
+"use client"
+
+import React, { FormEvent } from "react";
+import Buttons from "../buttons/basicButton";
+
+type LoginProps = {
+  title?: string;
+  className?: string;
+};
+
+const Login: React.FC<LoginProps> = ({ title = "Sign in to your account", className }) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement)?.value;
+    const password = (e.currentTarget.elements.namedItem("password") as HTMLInputElement)?.value;
+
+  };
+
+  return (
+    <div className={`flex items-center justify-center min-h-screen bg-gray-100 ${className}`}>
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105">
+        <h2 className="text-2xl font-bold text-center text-gray-900">{title}</h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              className="block w-full px-4 py-2 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              className="block w-full px-4 py-2 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Enter your password"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+              />
+              <label htmlFor="remember-me" className="block ml-2 text-sm text-gray-900">
+                Remember me
+              </label>
+            </div>
+            <div className="text-sm">
+              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                Forgot your password?
+              </a>
+            </div>
+          </div>
+          <Buttons type="submit" variant="primary" size="m" className="w-full">
+            Sign in
+          </Buttons>
+        </form>
+        <p className="text-sm text-center text-gray-600">
+          Don&apos;t have an account?{" "}
+          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+            Sign up
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
+```
+---
+
+## Usage
+Import and use the `Login` component like this:
+```tsx
+
+import Login from "@/components/Cards/login";
+
+export default function App() {
+  return <Login title="Welcome back" />;
+}
+
+```
+---
+
+## Props
+
+| **Prop**    | **Type**   | **Description**                                  | **Default**                  |
+|-------------|------------|--------------------------------------------------|------------------------------|
+| `title`     | `string`   | Heading displayed on the login card              | `"Sign in to your account"`  |
+| `className` | `string`   | Additional Tailwind classes for outer container  | `""`                         |
+
+---
