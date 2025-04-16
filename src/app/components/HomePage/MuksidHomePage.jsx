@@ -23,7 +23,7 @@ const MuksidHomePage = () => {
   const [colorIndex, setColorIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-      setColorIndex((prev) => (prev + 1) % colors.length);
+      setColorIndex((prev) => (prev + 1) % 10);
     }, 2000); // Change every 2 seconds
 
     return () => clearInterval(interval);
@@ -76,7 +76,7 @@ const MuksidHomePage = () => {
 
           {/* GitHub button with icon */}
           <Link
-            href="https://github.com/your-repo"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer flex items-center gap-2 bg-[#1c3752] hover:bg-[#163048] text-white px-6 py-3 text-lg rounded-full">

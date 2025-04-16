@@ -25,7 +25,7 @@ const BetaNav = () => {
         onClick={() => setShow(false)}
         className="text-xl font-bold hover:text-white/80"
         aria-label="Close Beta Banner">
-        &times;
+        x
       </button>
     </div>
   );
