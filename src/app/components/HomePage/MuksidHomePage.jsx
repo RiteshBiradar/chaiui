@@ -36,7 +36,7 @@ const MuksidHomePage = () => {
       <div className="absolute left-80 top-40">
         <SquareLoader />
       </div>
-      <div className="w-screen absolute left-0 top-15">
+      <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
       </div>
 
@@ -68,7 +68,7 @@ const MuksidHomePage = () => {
 
         <div className="mt-6 flex flex-wrap gap-4">
           {/* Explore Components button */}
-          <Link to="/docs">
+          <Link href="/docs">
             <button className="bg-[#e8953f] hover:bg-[#d17e28] cursor-pointer text-white px-6 py-3 text-lg rounded-full">
               Explore Components
             </button>
@@ -76,9 +76,7 @@ const MuksidHomePage = () => {
 
           {/* GitHub button with icon */}
           <Link
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://vercel.com/muksiduzs-projects/ui-cahi-ui/7RmWdnxhJzfznEtNAoEy4NaVdn77?filter=errors"
             className="cursor-pointer flex items-center gap-2 bg-[#1c3752] hover:bg-[#163048] text-white px-6 py-3 text-lg rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
