@@ -11,7 +11,8 @@ const firecrackerCardVariants = cva(
     variants: {
       variant: {
         default: "border-orange-500 bg-white text-black",
-        dark: "border-yellow-400 bg-black text-white",
+        dark: "border-yellow-400 bg-[#1c1c1c] text-white",
+        light:"border-gray-400 bg-gray-300 text-black"
       },
       size: {
         sm: "w-[250px] h-[160px]",
@@ -52,7 +53,7 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
   const [animate, setAnimate] = useState(false);
 
   return (
-    <div className="relative mx-auto mt-10">
+    <div>
      <div
   className={twMerge(
     clsx(firecrackerCardVariants({ size, variant, animate }), className)
@@ -61,8 +62,8 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
   onMouseLeave={() => setAnimate(false)}
   {...props}
 >
-        <h2 className="text-xl font-bold mb-2">{title}</h2>
-        <p className="text-sm text-center mb-4">{description}</p>
+        <h2 className="text-xl font-bold mb-2 text-black dark:text-white">{title}</h2>
+        <p className="text-sm text-center mb-4 text-gray-400">{description}</p>
 
         <button
           onClick={() => setAnimate(true)}
@@ -73,10 +74,10 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
 
         {animate && (
           <>
-            <span className="absolute w-2 h-2 bg-orange-500 rounded-full animate-firecracker1" />
-            <span className="absolute w-2 h-2 bg-orange-500 rounded-full animate-firecracker2" />
-            <span className="absolute w-2 h-2 bg-orange-500 rounded-full animate-firecracker3" />
-            <span className="absolute w-2 h-2 bg-orange-500 rounded-full animate-firecracker4" />
+            <span className="absolute w-2 h-2 bg-amber-400 rounded-full animate-firecracker1" />
+            <span className="absolute w-2 h-2 bg-amber-400 rounded-full animate-firecracker2" />
+            <span className="absolute w-2 h-2 bg-amber-400 rounded-full animate-firecracker3" />
+           
           </>
         )}
       </div>
@@ -130,7 +131,7 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
           }
         `}
       </style>
-    </div>
+ </div>
   );
 };
 

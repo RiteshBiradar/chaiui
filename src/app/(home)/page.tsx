@@ -1,19 +1,14 @@
-import Link from 'next/link';
+'use client';
+import dynamic from "next/dynamic";
+
+const MuksidHomePage = dynamic(() => import("../../app/components/HomePage/MuksidHomePage"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col justify-center text-center">
-      <h1 className="mb-4 text-2xl font-bold">Hello World</h1>
-      <p className="text-fd-muted-foreground">
-        You can open{' '}
-        <Link
-          href="/docs"
-          className="text-fd-foreground font-semibold underline"
-        >
-          /docs
-        </Link>{' '}
-        and see the documentation.
-      </p>
+      <MuksidHomePage />
     </main>
   );
 }
