@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import GridBackground from "./GridBackground";
 import StarRating from "./StarRating";
 import SquareLoader from "./SquareLoader";
+import BetaNav from "../BetaTsting/BetaNav";
 const MuksidHomePage = () => {
   const colors = [
     "#e8953f", // amber-orange
@@ -33,6 +34,9 @@ const MuksidHomePage = () => {
       </div>
       <div className="absolute left-80 top-40">
         <SquareLoader />
+      </div>
+      <div className="w-screen absolute left-0 top-15">
+        <BetaNav />
       </div>
 
       {/* right side of the code  */}
