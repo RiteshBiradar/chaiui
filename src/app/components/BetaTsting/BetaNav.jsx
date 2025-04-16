@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 const BetaNav = () => {
@@ -13,9 +14,11 @@ const BetaNav = () => {
         </span>
         <p className="text-sm font-medium">
           We're currently in beta! testing{"      "}
-          <a href="/feedback" className="underline hover:text-white/80">
+          <Link
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdyjpTbqsWDVF3KZEU7_83hlZjxc93LGL0JGqxJ30-LmzxHgQ/viewform?usp=dialog"
+            className="underline hover:text-white/80">
             Give Feedback →
-          </a>
+          </Link>
         </p>
       </div>
       <button
