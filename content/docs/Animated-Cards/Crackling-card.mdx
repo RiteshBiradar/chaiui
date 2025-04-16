@@ -1,0 +1,72 @@
+---
+title: Gradient Card
+description: Gradient animated card for your awesome ui design
+---
+{/* priview code  */}
+import {ComponentPreview} from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+
+import { buttonCode } from "../../codeWrittenText/buttonCode/buttonCode"
+
+import CracklingAnimatedCard from "../../../src/app/components/AllAnimatedCards/CracklingAnimatedCard"
+
+
+<ComponentPreview code={buttonCode}>
+  <CracklingAnimatedCard></CracklingAnimatedCard>
+</ComponentPreview>
+
+## CLI Installation
+
+Before proceeding, ensure that **ShadCN UI** is properly installed in your project.  
+You can refer to the [installation guide](https://ui.shadcn.com/docs/installation) for detailed instructions.
+
+Once ShadCN is set up, you can install the component using the CLI:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/registry/basic-button.json
+
+```
+
+## Manual Installation
+
+To manually set up the `Button` component in your project, follow the steps below:
+
+1. Navigate to the `src` directory in your project.
+2. Create a new folder named `components`.
+3. Inside the `components` folder, create a subfolder named `ui`.
+4. Within `components/ui`, create a new file called `basicButton.tsx`.
+5. Copy and paste the provided button component code into this file.
+
+Once added, you can import and use the component throughout your application.
+
+
+## Usage
+
+To use the `Button` component in your project, follow the steps below:
+
+###  Import the component
+
+```javascript
+import Button from "@/components/ui/buttons/basicButton";
+
+```
+
+### Use the component
+```javascript
+<Button variant="primary" size="m" rounded="medium" hover="float">
+  Click Me
+</Button>
+
+```
+
+## Props
+
+The `Button` component accepts the following props to customize its appearance and behavior:
+
+| **Prop**   | **Type**   | **Description**                          | **Accepted Values**                                                                 |
+|------------|------------|------------------------------------------|-------------------------------------------------------------------------------------|
+| `variant`  | `string`   | Defines the button's color theme.        | `"destructive"`, `"primary"`, `"yellow"`, `"chai"`, `"lavender"`, `"purple"`, `"teal"`, `"green"`, `"sky"`, `"blue"`, `"facebook"`, `"stroke"` |
+| `size`     | `string`   | Sets the button size.                    | `"sdot"`, `"dot"`, `"sm"`, `"m"`, `"xl"`                                            |
+| `rounded`  | `string`   | Controls the border-radius shape.        | `"circle"`, `"medium"`, `"low"`, `"rectangle"`, `"small"`                            |
+| `hover`    | `string`   | Sets the hover interaction effect.       | `"float"`, `"rotate"`, `"slide"`,`shadow`, `"ring"`                                          |
+| `hover`    | `string`   | Sets the hover interaction effect.       | `"float"`, `"rotate"`, `"slide"`,`shadow`, `"ring"`                                          |
+| `className` | `string`  | custom className effects           | `className="string"`,   
