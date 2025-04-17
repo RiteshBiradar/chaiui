@@ -47,4 +47,25 @@ export const ui: Registry=[
         ]
 
     }
+    ,{
+        name:"signup",
+        type: "registry:block",
+        registryDependencies:[], //dependencied that i am using on my component
+        // dependencies:["motion","lucid-icons"] - dependencies that are needed to install
+        files:[
+            "ui/cards/signup.tsx",
+            "ui/buttons/basicButton.tsx"
+        ]
+
+    },{
+        name:"glowcard",
+        type: "registry:block",
+        registryDependencies:[], //dependencied that i am using on my component
+        // dependencies:["motion","lucid-icons"] - dependencies that are needed to install
+        files:[
+            "ui/cards/glowLift.tsx",
+            
+        ]
+
+    }
 ]

@@ -1,19 +1,119 @@
 ---
 title: Installation
-description: Your first document
+description: A easy guide to install shadcn and configure our components
 ---
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
 
-# Installation With VITE - javascript
+# Installation 
+
+## 1. Configure and Install TailwindCss
+
+```bash
+npm install tailwind
+```
+
+## 2.Edit tsconfig.json file ->
+###  If You are in js skip this file
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited. Add the baseUrl and paths properties to the compilerOptions section of the tsconfig.json and tsconfig.app.json files:
+
+```json
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## 3.Edit tsconfig.app.json file -> 
+### In js create jsconfig.json file and add the  following command
+Add the following code to the tsconfig.app.json file to resolve paths, for your IDE:
+
+```json
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+## 4.Update vite.config.ts
+Add the following code to the vite.config.ts so your app can resolve paths without error:
+
+```bash
+npm install -D @types/node
+```
+
+```ts
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+ 
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
 
 
+## 5.Run the shadcn init command to setup your project:
 
-# Installation With VITE - typeScript
 
-## What is Next?
+```bash
+npx shadcn@latest init
+```
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+### You will be asked a few questions to configure components.json.
+
+```
+Allow it to create a components folder in src/components
+Which color would you like to use as base color? › Neutral
+```
+
+## 6.Add Components
+You can now start adding components to your project.
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the Button component to your project. You can then import it like this:
+
+src/App.tsx
+```jsx
+import { Button } from "@/components/ui/button"
+ 
+function App() {
+  return (
+   <Button variant="primary" size="m" rounded="medium" hover="float">
+  Click Me
+   </Button>
+  )
+}
+
+export default App
+ ```

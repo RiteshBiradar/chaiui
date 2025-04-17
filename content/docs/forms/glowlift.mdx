@@ -1,0 +1,95 @@
+---
+title: Glow Lift Card  
+description: A stylish card with glowing and lifting effects on hover.
+---
+
+import GlowLiftCard from "../../../registry/ui/cards/glowLift"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { glowLiftCardCode } from "../../codeWrittenText/cards/glowLiftCard"
+
+## Overview
+
+The `GlowLiftCard` component is a visually appealing UI card that features a glowing and lifting effect when hovered. It’s designed to draw attention and add interactivity to your interface.
+
+Key features include:
+
+- **Title and Description**: Customizable title and description.
+- **Hover Effects**: Smooth hover effects including glow and lift animations.
+- **Customizable Styles**: Easy to apply additional styles using the `className` prop.
+
+<ComponentPreview code={glowLiftCardCode}>
+  <GlowLiftCard />
+</ComponentPreview>
+
+---
+
+## CLI Installation
+
+Ensure your project is using ShadCN and the custom UI system. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/registry/glowcard.json
+```
+---
+
+## Manual Installation
+
+To manually set up the `GlowLiftCard ` component in your project, follow these steps:
+
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/glowLiftCard`.
+3. Inside the `glowLiftCard` folder, create a file named `glowLiftCard.tsx`.
+4. Paste the following code into `glowLiftCard.tsx`.
+
+```tsx
+import React from "react";
+
+type GlowLiftCardProps = {
+  title?: string;
+  description?: string;
+  className?: string;
+};
+
+const GlowLiftCard: React.FC<GlowLiftCardProps> = ({
+  title = "Glow Lift",
+  description = "Hover to see glow and lift effect.",
+  className = "", 
+}) => {
+  return (
+    <div
+      className={`p-6 w-64 bg-white rounded-xl shadow-md transform transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-blue-400 hover:-translate-y-2 ${className}`}
+    >
+      <h2 className="font-bold text-lg text-gray-900">{title}</h2>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
+
+export default GlowLiftCard;
+
+
+```
+---
+
+## Usage
+Import and use the `GlowLiftCard ` component like this:
+```tsx
+
+import GlowLiftCard from "@/components/ui/cards/glowLiftCard";
+
+export default function App() {
+  return <GlowLiftCard title="Glow Lift" description="Hover to see the magic!" />;
+}
+
+
+```
+---
+
+## Props
+
+| **Prop**    | **Type**   | **Description**                                  | **Default**                  |
+|-------------|------------|--------------------------------------------------|------------------------------|
+| `title`     | `string`   | The title displayed on the card                  | `"Glow Lift"`                |
+| `description` | `string`   | 	The description text under the title          | `""`                         |
+| `className` | `string`   | 	Additional Tailwind classes for outer container        | `""`                         |
+---

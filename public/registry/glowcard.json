@@ -1,0 +1,13 @@
+{
+  "name": "glowcard",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\n\r\ntype GlowLiftCardProps = {\r\n  title?: string;\r\n  description?: string;\r\n  className?: string;\r\n};\r\n\r\nconst GlowLiftCard: React.FC<GlowLiftCardProps> = ({\r\n  title = \"Glow Lift\",\r\n  description = \"Hover to see glow and lift effect.\",\r\n  className = \"\", \r\n}) => {\r\n  return (\r\n    <div\r\n      className={`p-6 w-64 bg-white rounded-xl shadow-md transform transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-blue-400 hover:-translate-y-2 ${className}`}\r\n    >\r\n      <h2 className=\"font-bold text-lg text-gray-900\">{title}</h2>\r\n      <p className=\"text-gray-600\">{description}</p>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default GlowLiftCard;\r\n",
+      "path": "ui/cards/glowLift.tsx",
+      "target": "components/ui/cards/glowLift.tsx"
+    }
+  ]
+}

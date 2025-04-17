@@ -1,0 +1,13 @@
+{
+  "name": "crackling-card",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { twMerge } from \"tailwind-merge\";\r\nimport clsx from \"clsx\";\r\n\r\n// 1. Define card variants\r\nconst cracklingCardVariants = cva(\r\n  \"relative p-[3px] rounded-xl animate-border overflow-hidden\",\r\n  {\r\n    variants: {\r\n      size: {\r\n        sm: \"w-[200px] h-[140px]\",\r\n        md: \"w-[300px] h-[200px]\",\r\n        lg: \"w-[400px] h-[250px]\",\r\n      },\r\n      variant: {\r\n        default: \"bg-white text-black\",\r\n        dark: \"bg-gray-900 text-white\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      size: \"md\",\r\n      variant: \"default\",\r\n    },\r\n  }\r\n);\r\n\r\n// 2. Define props\r\ntype CracklingCardProps = React.HTMLAttributes<HTMLDivElement> &\r\n  VariantProps<typeof cracklingCardVariants> & {\r\n    title?: string;\r\n    description?: string;\r\n    animationDuration?: string;\r\n  };\r\n\r\n// 3. Component\r\nconst CracklingCard: React.FC<CracklingCardProps> = ({\r\n  title = \"Crackling Border\",\r\n  description = \"This card has a sparkly moving border!\",\r\n  size,\r\n  variant,\r\n  className,\r\n  animationDuration = \"4s\",\r\n  ...props\r\n}) => {\r\n  return (\r\n    <>\r\n      <div className={twMerge(clsx(cracklingCardVariants({ size, variant }), className))} {...props}>\r\n        <div className=\"w-full h-full rounded-xl flex flex-col items-center justify-center text-center px-4 py-6\">\r\n          <h2 className=\"text-xl font-bold mb-2\">{title}</h2>\r\n          <p className=\"text-sm\">{description}</p>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Dynamic animation styles */}\r\n      <style>{`\r\n        @keyframes crackle-border {\r\n          0% { background-position: 0% 50%; }\r\n          50% { background-position: 100% 50%; }\r\n          100% { background-position: 0% 50%; }\r\n        }\r\n        .animate-border {\r\n          background: linear-gradient(\r\n            270deg,\r\n            #ff00c8,\r\n            #00ffff,\r\n            #ff9900,\r\n            #ff00c8\r\n          );\r\n          background-size: 600% 600%;\r\n          animation: crackle-border ${animationDuration} linear infinite;\r\n        }\r\n      `}</style>\r\n    </>\r\n  );\r\n};\r\n\r\nexport default CracklingCard;\r\n",
+      "path": "ui/animatedCards/CracklingCard.tsx",
+      "target": "components/ui/animatedCards/CracklingCard.tsx"
+    }
+  ]
+}

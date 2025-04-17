@@ -1,0 +1,13 @@
+{
+  "name": "flip-card",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { twMerge } from \"tailwind-merge\";\r\nimport clsx from \"clsx\";\r\n\r\nconst flipCardVariants = cva(\"relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]\", {\r\n  variants: {\r\n    animation: {\r\n      flipY: \"hover:[transform:rotateY(180deg)]\",\r\n      flipX: \"hover:[transform:rotateX(180deg)]\",\r\n      flipBoth: \"hover:[transform:rotateX(180deg)_rotateY(180deg)]\"\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    animation: \"flipY\",\r\n  },\r\n});\r\n\r\ntype FlipCardProps = React.HTMLAttributes<HTMLDivElement> &\r\n  VariantProps<typeof flipCardVariants> & {\r\n    front?: React.ReactNode;\r\n    back?: React.ReactNode;\r\n  };\r\n\r\nexport default function FlipCard({\r\n  animation,\r\n  className,\r\n  front,\r\n  back,\r\n  ...props\r\n}: FlipCardProps) {\r\n  return (\r\n    <div className=\"cursor-pointer w-64 h-40  [perspective:1000px]\" {...props}>\r\n      <div className={twMerge(clsx(flipCardVariants({ animation }), className))}>\r\n        <div className=\"absolute w-full h-full bg-gray-500 text-white rounded-xl flex items-center justify-center text-xl backface-hidden overflow-hidden\">\r\n          {front ?? \"Front\"}\r\n        </div>\r\n        <div className=\"absolute w-full h-full bg-indigo-600 text-white rounded-xl flex items-center justify-center text-xl backface-hidden [transform:rotateY(180deg)] overflow-hidden object-cover\">\r\n          {back ?? \"Back\"}\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "ui/animatedCards/FlipAnimatedCard.tsx",
+      "target": "components/ui/animatedCards/FlipAnimatedCard.tsx"
+    }
+  ]
+}
