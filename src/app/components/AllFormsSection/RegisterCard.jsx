@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import { motion } from "motion/react";
 
 const RegisterCard = () => {
   return (
@@ -7,9 +7,8 @@ const RegisterCard = () => {
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md"
-      >
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
         {/* Heading */}
         <div className="flex items-center mb-4">
           <div className="w-3 h-3 bg-blue-600 rounded-full mr-2" />

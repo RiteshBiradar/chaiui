@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import { motion } from "motion/react";
 
 const SignInCard = () => {
   return (
@@ -8,8 +8,7 @@ const SignInCard = () => {
         initial={{ opacity: 0, y: -30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-white p-8 rounded-[2rem] shadow-2xl w-full max-w-md text-center"
-      >
+        className="bg-white p-8 rounded-[2rem] shadow-2xl w-full max-w-md text-center">
         {/* Heading */}
         <h2 className="text-2xl font-bold text-blue-600 mb-6">Sign In</h2>
 
@@ -29,7 +28,9 @@ const SignInCard = () => {
 
         {/* Forgot Password */}
         <div className="text-left mt-2 mb-4">
-          <a href="#" className="text-sm text-blue-500 hover:underline">Forgot Password ?</a>
+          <a href="#" className="text-sm text-blue-500 hover:underline">
+            Forgot Password ?
+          </a>
         </div>
 
         {/* Sign In Button */}
@@ -45,8 +46,7 @@ const SignInCard = () => {
           {["G", "", "X"].map((icon, index) => (
             <button
               key={index}
-              className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-md text-lg hover:scale-110 transition-all duration-300"
-            >
+              className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-md text-lg hover:scale-110 transition-all duration-300">
               {icon}
             </button>
           ))}
