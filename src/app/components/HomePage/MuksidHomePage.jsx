@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import React, { useState, useEffect } from "react";
 import GridBackground from "./GridBackground";
 import StarRating from "./StarRating";
-import SquareLoader from "./SquareLoader";
 import BetaNav from "../BetaTsting/BetaNav";
 import Link from "next/link";
 const MuksidHomePage = () => {
@@ -33,13 +32,11 @@ const MuksidHomePage = () => {
       <div className="w-screen h-screen absolute z-[-10] top-0 left-0 overflow-hidden">
         <GridBackground />
       </div>
-      {/* <div className="absolute top-35 left-40 md:left-80 md:top-40">
-        <SquareLoader />
-      </div> */}
+
       <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
       </div>
-
+    
       {/* right side of the code  */}
       <div className="flex flex-col justify-center items-center m-3">
         <h1 className=" text-4xl sm:text-6xl xl:text-7xl  font-bold dark:text-white text-gray-950 leading-tight">
@@ -66,10 +63,10 @@ const MuksidHomePage = () => {
           effortlessly
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-4">
+        <div className="mt-6 flex flex-col xl:flex-row flex-wrap gap-4 ">
           {/* Explore Components button */}
           <Link href="/docs">
-            <button className="bg-[#e8953f] hover:bg-[#d17e28] cursor-pointer text-white px-6 py-3 text-lg rounded-full">
+            <button className="bg-[#e8953f] hover:bg-[#d17e28] cursor-pointer text-white px-4 xl:px-6 py-3 text-lg rounded-full">
               Explore Components
             </button>
           </Link>
@@ -77,7 +74,7 @@ const MuksidHomePage = () => {
           {/* GitHub button with icon */}
           <Link
             href="https://vercel.com/muksiduzs-projects/ui-cahi-ui/7RmWdnxhJzfznEtNAoEy4NaVdn77?filter=errors"
-            className="cursor-pointer flex items-center gap-2 bg-[#1c3752] hover:bg-[#163048] text-white px-6 py-3 text-lg rounded-full">
+            className="cursor-pointer flex items-center justify-center gap-2 bg-[#1c3752] hover:bg-[#163048] text-white px-4 xl:px-6 py-3 text-lg rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
