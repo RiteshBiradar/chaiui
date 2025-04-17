@@ -30,10 +30,10 @@ const MuksidHomePage = () => {
   }, []);
   return (
     <div>
-      <div className="w-screen h-screen absolute z-[-10] top-0 left-0">
+      <div className="w-screen h-screen absolute z-[-10] top-0 left-0 overflow-hidden">
         <GridBackground />
       </div>
-      <div className="absolute left-80 top-40">
+      <div className="absolute top-35 left-40 md:left-80 md:top-40">
         <SquareLoader />
       </div>
       <div className="w-screen absolute left-0 bottom-0">
@@ -41,17 +41,17 @@ const MuksidHomePage = () => {
       </div>
 
       {/* right side of the code  */}
-      <div className="flex flex-col justify-center items-center ">
-        <h1 className="text-8xl md:text-7xl font-bold text-white leading-tight">
+      <div className="flex flex-col justify-center items-center m-3">
+        <h1 className=" text-4xl sm:text-6xl xl:text-7xl  font-bold dark:text-white text-gray-950 leading-tight">
           Build Faster With
           <br />
-          <span className="text-white">
+          <span className="dark:text-white text-gray-950">
             Our hot{" "}
             <motion.span
               className="font-bold"
               animate={{ color: colors[colorIndex] }}
               transition={{
-                duration: 6,
+                duration: 2,
                 ease: "easeInOut",
                 repeat: Infinity,
                 repeatType: "mirror",
@@ -60,7 +60,7 @@ const MuksidHomePage = () => {
             </motion.span>
           </span>
         </h1>
-        <p className="text-gray-400 mt-4 text-lg max-w-xl">
+        <p className="text-gray-400 mt-4 text-md max-w-xl ">
           A next-gen component library designed to empower developers to create
           beautiful, accessible, and high-performance web experiences —
           effortlessly

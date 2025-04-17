@@ -39,11 +39,16 @@ const SquareLoader = () => {
         height: 28px;
         margin: 2px;
         border-radius: 0px;
-        background: white;
+         background: black;
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         animation: square-animation 10s ease-in-out infinite both;
+      }
+
+      .dark .loader-square {
+       
+         background: white;
       }
 
       .loader-square:nth-of-type(1) { animation-delay: 0s; }
@@ -55,7 +60,9 @@ const SquareLoader = () => {
       .loader-square:nth-of-type(7) { animation-delay: -8.5714285714s; }
     `;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (
