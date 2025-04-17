@@ -33,9 +33,9 @@ const MuksidHomePage = () => {
       <div className="w-screen h-screen absolute z-[-10] top-0 left-0 overflow-hidden">
         <GridBackground />
       </div>
-      <div className="absolute top-35 left-40 md:left-80 md:top-40">
+      {/* <div className="absolute top-35 left-40 md:left-80 md:top-40">
         <SquareLoader />
-      </div>
+      </div> */}
       <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
       </div>
