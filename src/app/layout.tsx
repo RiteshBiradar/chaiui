@@ -14,9 +14,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <Analytics/>
+   
       <body className="flex flex-col min-h-screen">
-        <RootProvider>{children}</RootProvider>
+        <RootProvider>{children}<Analytics/></RootProvider>
       </body>
     </html>
   );
