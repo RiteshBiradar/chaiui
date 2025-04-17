@@ -1,71 +1,125 @@
 ---
-title: Flip Card
-description: Flip animated card for your awesome ui design
+title: Flip Card  
+description: Flip animated card for your awesome UI design
 ---
-{/* priview code  */}
-import {ComponentPreview} from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
 
-import { buttonCode } from "../../codeWrittenText/buttonCode/buttonCode"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import AllFlipAnimatedCard from "../../../src/app/components/AllAnimatedCards/AllFlipAnimatedCard"
+import { flipCardCode } from "../../codeWrittenText/animatedCards/flipCardCode"
 
-import AllFLipAnimatedCard from "../../../src/app/components/AllAnimatedCards/AllFlipAnimatedCard"
+## Overview
 
+The `FlipCard` component is an interactive UI card that flips on hover or interaction. It’s ideal for displaying dual-faced content, such as feature highlights, product details, or team info.
 
-<ComponentPreview code={buttonCode}>
-  <AllFLipAnimatedCard></AllFLipAnimatedCard>
+Key features include:
+
+- **Flip Animation**: Choose from `flipY`, `flipX`, or `flipBoth`.
+- **Custom Content**: Pass any JSX elements as front and back.
+- **Styled Container**: Easily apply custom styles via `className`.
+
+<ComponentPreview code={flipCardCode}>
+  <AllFlipAnimatedCard />
 </ComponentPreview>
+
+---
 
 ## CLI Installation
 
-Before proceeding, ensure that **ShadCN UI** is properly installed in your project.  
-You can refer to the [installation guide](https://ui.shadcn.com/docs/installation) for detailed instructions.
-
-Once ShadCN is set up, you can install the component using the CLI:
+Ensure your project is using ShadCN and the custom UI system. Then run:
 
 ```bash
-npx shadcn@latest add https://ui-cahi-ui.vercel.app/registry/basic-button.json
-
+npx shadcn@latest add https://ui-chaiui.vercel.app/registry/flipcard.json
 ```
+
+---
 
 ## Manual Installation
 
-To manually set up the `Button` component in your project, follow the steps below:
+To manually set up the `FlipCard ` component in your project, follow these steps:
 
-1. Navigate to the `src` directory in your project.
-2. Create a new folder named `components`.
-3. Inside the `components` folder, create a subfolder named `ui`.
-4. Within `components/ui`, create a new file called `basicButton.tsx`.
-5. Copy and paste the provided button component code into this file.
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/flipCard`.
+3. Inside the `flipCard` folder, create a file named `flipCard.tsx`.
+4. Paste the following code into `flipCard.tsx`.
 
-Once added, you can import and use the component throughout your application.
+```tsx
+"use client";
 
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+import clsx from "clsx";
+
+const flipCardVariants = cva("relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]", {
+  variants: {
+    animation: {
+      flipY: "hover:[transform:rotateY(180deg)]",
+      flipX: "hover:[transform:rotateX(180deg)]",
+      flipBoth: "hover:[transform:rotateX(180deg)_rotateY(180deg)]"
+    },
+  },
+  defaultVariants: {
+    animation: "flipY",
+  },
+});
+
+type FlipCardProps = React.HTMLAttributes<HTMLDivElement> & 
+  VariantProps<typeof flipCardVariants> & {
+    front?: React.ReactNode;
+    back?: React.ReactNode;
+  };
+
+const FlipCard = ({
+  animation,
+  className,
+  front,
+  back,
+  ...props
+}: FlipCardProps) => {
+  return (
+    <div className="cursor-pointer w-64 h-40 [perspective:1000px]" {...props}>
+      <div className={twMerge(clsx(flipCardVariants({ animation }), className))}>
+        <div className="absolute w-full h-full bg-gray-500 text-white rounded-xl flex items-center justify-center text-xl backface-hidden overflow-hidden">
+          {front ?? "Front"}
+        </div>
+        <div className="absolute w-full h-full bg-indigo-600 text-white rounded-xl flex items-center justify-center text-xl backface-hidden [transform:rotateY(180deg)] overflow-hidden object-cover">
+          {back ?? "Back"}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FlipCard;
+
+```
+---
 
 ## Usage
+Import and use the `FlipCard ` component like this:
+```tsx
 
-To use the `Button` component in your project, follow the steps below:
+import FlipCard from "@/components/ui/cards/flipCard";
 
-###  Import the component
+export default function App() {
+  return (
+    <div className="p-10 flex gap-5 flex-wrap">
+      <FlipCard front={<div className="text-xl font-bold">Hello</div>} back={<div className="text-xl font-bold">Goodbye</div>} />
+      <FlipCard animation="flipX" front={<div className="p-4">🌞 Day</div>} back={<div className="p-4">🌜 Night</div>} />
+    </div>
+  );
+}
 
-```javascript
-import Button from "@/components/ui/buttons/basicButton";
 
 ```
-
-### Use the component
-```javascript
-<Button variant="primary" size="m" rounded="medium" hover="float">
-  Click Me
-</Button>
-
-```
+---
 
 ## Props
 
-The `FlipCard` component accepts the following props to customize its appearance and behavior:
-
-| Prop       | Type                                                       | Default   | Description                                                                 |
-|------------|------------------------------------------------------------|-----------|-----------------------------------------------------------------------------|
-| `animation`| `"flipY"` \| `"flipX"` \| `"flipBoth"`                    | `"flipY"` | Controls the direction of the flip animation.                              |
-| `front`    | `React.ReactNode`                                          | `"Front"` | Content for the front face of the flip card.                               |
-| `back`     | `React.ReactNode`                                          | `"Back"`  | Content for the back face of the flip card.                                |
-| `className`| `string`                                                   | `undefined`| Custom class names for styling the inner card.                             |
-| `...props` | `React.HTMLAttributes<HTMLDivElement>`                    | —         | All other standard HTML div attributes (e.g. `id`, `style`, `onClick`).    |
+| **Prop**    | **Type**   | **Description**                                  | **Default**                  |
+|-------------|------------|--------------------------------------------------|------------------------------|
+| `front`     | `ReactNode`   | Content displayed on the front of the flip card| `"Front"`                   |
+| `back` | `ReactNode`   | Content displayed on the back of the flip card  | `"Back"`                         |
+| `animation` | `string`   | Animation style: flipY, flipX, or flipBoth  | `"flipY"`                         |
+| `className` | `string`   | Additional Tailwind classes for the outer container | `	""`                         |
+---

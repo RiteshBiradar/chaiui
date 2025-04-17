@@ -36,7 +36,7 @@ const MuksidHomePage = () => {
       <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
       </div>
-
+    
       {/* right side of the code  */}
       <div className="flex flex-col justify-center items-center m-3">
         <h1 className=" text-4xl sm:text-6xl xl:text-7xl  font-bold dark:text-white text-gray-950 leading-tight">
