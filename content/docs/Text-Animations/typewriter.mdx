@@ -1,0 +1,122 @@
+---
+title: Typing Animation
+description: A typing animation component that simulates typing effects for an engaging text display.
+---
+
+import TypingAnimation from "../../../registry/ui/textAnimations/typingAnimation"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { typingAnimationCode } from "../../codeWrittenText/text/typing"
+
+## Overview
+
+The `TypingAnimation` component simulates a typing effect, where words are typed out one character at a time. It is perfect for creating engaging and interactive text animations in hero sections, headers, or intro animations.
+
+Key features include:
+
+- **Typing Effect**: Words are typed one character at a time for a realistic effect.
+- **Customizable Speed**: Modify the typing speed and switch delay between words.
+- **Word Loop**: The component loops through an array of words indefinitely.
+
+<ComponentPreview code={typingAnimationCode}>
+  <TypingAnimation words={['Developer', 'Designer', 'Creator']} />
+</ComponentPreview>
+
+---
+
+## CLI Installation
+
+If you’re using ChaiUI's registry system, install via:
+
+```bash
+npx shadcn@latest add https://ui-chaiui.vercel.app/registry/typingAnimation.json
+```
+
+## Manual Installation
+
+To manually set up the `TypingAnimation ` component in your project, follow these steps:
+
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/textAnimations`.
+3. Inside the `textAnimations` folder, create a file named `textAnimations.tsx`.
+4. Paste the following code into `textAnimations.tsx`.
+
+```tsx
+"use client"
+import React, { useEffect, useState } from 'react';
+
+type TypingAnimationProps = {
+  words: string[];
+  typingSpeed?: number;  
+  switchDelay?: number;  
+};
+
+const TypingAnimation: React.FC<TypingAnimationProps> = ({
+  words,
+  typingSpeed = 150,
+  switchDelay = 1000,
+}) => {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [showText, setShowText] = useState('');
+
+  useEffect(() => {
+    let charIndex = 0;
+    const currentWord = words[wordIndex];
+    const interval = setInterval(() => {
+      if (charIndex <= currentWord.length) {
+        setShowText(currentWord.slice(0, charIndex));
+        charIndex++;
+      } else {
+        clearInterval(interval);
+        setTimeout(() => {
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }, switchDelay);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(interval);
+  }, [wordIndex, words, typingSpeed, switchDelay]);
+
+  return (
+    <div className="text-4xl sm:text-5xl text-white font-normal">
+      I'm a{' '}
+      <span className="text-[#FC6D6D] font-semibold border-r-2 border-[#FC6D6D] pr-1 animate-blink">
+        {showText}
+      </span>
+    </div>
+  );
+};
+
+export default TypingAnimation;
+
+```
+---
+
+## Usage
+Import and use the `TypingAnimation ` component like this:
+```tsx
+
+import TypingAnimation from "@/components/ui/textAnimations/typingAnimation";
+
+export default function App() {
+  return (
+    <TypingAnimation
+      words={['Developer', 'Designer', 'Creator']}
+      typingSpeed={100}
+      switchDelay={800}
+    />
+  );
+}
+
+
+```
+---
+
+## Props
+
+| **Prop**    | **Type**   | **Description**                                  | **Default**                  |
+|-------------|------------|--------------------------------------------------|------------------------------|
+| `words`     | `string[]`   | An array of words to type out sequentially.              |   –(required)`               |
+| `typingSpeed` | `number`   | 	Speed of typing effect in milliseconds (lower is faster).         | `"150"`                      |
+| `switchDelay` | `number`   | Time delay between switching words in milliseconds.       | `"1000"`                  |
+
+---

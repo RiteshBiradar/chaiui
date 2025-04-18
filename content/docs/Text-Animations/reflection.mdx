@@ -1,0 +1,123 @@
+---
+title: Reflection Text
+description: A stylish mirrored reflection text component for hero sections or branding.
+---
+
+import Reflection from "../../../registry/ui/textAnimations/reflection"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { reflectionTextCode } from "../../codeWrittenText/text/reflection"
+
+## Overview
+
+The `Reflection` component displays mirrored text with customizable styles, making it perfect for hero sections, branding headers, or interactive UI elements.
+
+Key features include:
+
+- **Reflected Text**: Displays a mirrored version of your text with adjustable opacity.
+- **Customizable Size and Color**: Easily modify font size and color with props.
+- **Extendable Styles**: Apply more styles using the `additionalStyles` prop.
+
+<ComponentPreview code={reflectionTextCode}>
+  <Reflection text="ChaiUI" />
+</ComponentPreview>
+
+---
+
+## CLI Installation
+
+If you’re using ChaiUI's registry system, install via:
+
+```bash
+npx shadcn@latest add https://ui-chaiui.vercel.app/registry/reflection.json
+```
+
+---
+## Manual Installation
+
+To manually set up the `Reflection` component in your project, follow these steps:
+
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/reflection`.
+3. Inside the `reflection` folder, create a file named `reflection.tsx`.
+4. Paste the following code into `reflection.tsx`.
+
+```tsx
+"use client";
+
+import React, { FormEvent } from "react";
+import Buttons from "../buttons/basicButton";
+
+"use client";
+
+import React from 'react';
+
+type ReflectionProps = {
+  text: string;
+  fontSize?: string;
+  textColor?: string;
+  additionalStyles?: string;
+};
+
+const Reflection: React.FC<ReflectionProps> = ({
+  text,
+  fontSize = '6xl',
+  textColor = 'white',
+  additionalStyles = '',
+}) => {
+  return (
+    <div className={`flex items-center justify-center h-screen w-full ${additionalStyles}`}>
+      <div className="text-center">
+        <h1 className={`text-${textColor} text-${fontSize} font-bold`}>{text}</h1>
+
+        <h1
+          className={`text-${textColor} text-${fontSize} font-bold mt-0.5 transform scale-y-[-1] opacity-50`}
+          style={{
+            maskImage: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
+            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
+            filter: 'blur(1px)',
+          }}
+        >
+          {text}
+        </h1>
+      </div>
+    </div>
+  );
+};
+
+export default Reflection;
+
+```
+---
+
+## Usage
+Import and use the `Reflection` component like this:
+```tsx
+
+import Reflection from "@/components/ui/textAnimations/reflection";
+
+export default function App() {
+  return (
+    <Reflection
+      text="ChaiUI"
+      fontSize="6xl"
+      textColor="white"
+      reflectionOpacity={30}
+    />
+  );
+}
+
+
+```
+---
+
+## Props
+
+| **Prop**    | **Type**   | **Description**                                  | **Default**                  |
+|-------------|------------|--------------------------------------------------|------------------------------|
+| `text`     | `string`   | The main text to display and reflect              |   –(required)`               |
+| `fontSize` | `string`   | Tailwind font size class (e.g., 6xl, 4xl)         | `"6xl"`                      |
+| `textColor` | `string`   | Tailwind text color (e.g., white, gray-600)        | `"white"`                  |
+| `reflectionOpacity` | `number`   | Tailwind opacity value (10-100) for reflected text         | `"30"`     |
+| `additionalStyles` | `string`   | Extra classes to apply to the container         | `""`     |
+
+---

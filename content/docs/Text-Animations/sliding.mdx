@@ -1,0 +1,126 @@
+---
+title: Sliding Text
+description: A smooth animated sliding text component with customizable gradient and speed for modern UIs.
+---
+
+import SlidingText from "../../../registry/ui/textAnimations/sliding"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { slidingTextCode } from "../../codeWrittenText/text/sliding"
+
+## Overview
+
+The `SlidingText` component creates a continuously moving text with gradient styles, perfect for headers, hero sections, and attention-grabbing banners.
+
+Key features include:
+
+- **Continuous Sliding Motion**: Text moves infinitely from left to right.
+- **Custom Duration**: Control how fast the text scrolls.
+- **Gradient Text**: Use customizable gradient colors for vibrant visual effects.
+
+<ComponentPreview code={slidingTextCode}>
+  <SlidingText text="Welcome to ChaiUI" />
+</ComponentPreview>
+
+---
+
+## CLI Installation
+
+If you’re using ChaiUI's registry system, install via:
+
+```bash
+npx shadcn@latest add https://ui-chaiui.vercel.app/registry/sliding.json
+```
+
+---
+## Manual Installation
+
+To manually set up the `SlidingText` component in your project, follow these steps:
+
+1. Go to your `src` directory.
+2. Create a folder structure: `components/ui/sliding`.
+3. Inside the `slidingText` folder, create a file named `sliding.tsx`.
+4. Paste the following code into `sliding.tsx`.
+
+```tsx
+"use client";
+
+import React from "react";
+
+type SlidingTextProps = {
+  text: string;
+  duration?: string; 
+  gradientFrom?: string; 
+  gradientTo?: string;   
+};
+
+const SlidingText: React.FC<SlidingTextProps> = ({
+  text,
+  duration = "10s",
+  gradientFrom = "blue-500",
+  gradientTo = "green-400",
+}) => {
+  return (
+    <div className="flex justify-center items-center">
+      <div className="overflow-hidden relative w-full">
+        <div
+          className={`text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-${gradientFrom} to-${gradientTo} animate-slide`}
+        >
+          <h1 className="whitespace-nowrap">{text}</h1>
+        </div>
+      </div>
+
+      <style>
+        {`
+          @keyframes slide {
+            0% {
+              transform: translateX(-100%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+
+          .animate-slide {
+            animation: slide ${duration} linear infinite;
+          }
+        `}
+      </style>
+    </div>
+  );
+};
+
+export default SlidingText;
+
+```
+
+---
+
+## Usage
+
+Import and use the `SlidingText` component like this:
+
+```tsx
+import SlidingText from "@/components/ui/textAnimations/sliding";
+
+export default function App() {
+  return (
+    <SlidingText
+      text="Welcome to ChaiUI"
+      duration="12s"
+      gradientFrom="blue-500"
+      gradientTo="purple-400"
+    />
+  );
+}
+```
+
+---
+
+## Props
+
+| **Prop**        | **Type**   | **Description**                                          | **Default**     |
+|------------------|------------|----------------------------------------------------------|------------------|
+| `text`           | `string`   | The text to be displayed and animated                   | – (required)     |
+| `duration`       | `string`   | Duration of the animation (e.g., "10s", "5s")           | `"10s"`          |
+| `gradientFrom`   | `string`   | Tailwind color name to start the gradient               | `"blue-500"`     |
+| `gradientTo`     | `string`   | Tailwind color name to end the gradient                 | `"green-400"`    |
