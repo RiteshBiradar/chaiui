@@ -1,6 +1,7 @@
 'use client';
 import dynamic from "next/dynamic";
 
+import Home from "../../app/components/HomePage/RiteshHomePage"
 const MuksidHomePage = dynamic(() => import("../../app/components/HomePage/MuksidHomePage"), {
   ssr: false,
 });
@@ -8,7 +9,8 @@ const MuksidHomePage = dynamic(() => import("../../app/components/HomePage/Muksi
 export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col justify-center text-center">
-      <MuksidHomePage />
+      <Home></Home>
+      {/* <MuksidHomePage /> */}
     </main>
   );
 }
