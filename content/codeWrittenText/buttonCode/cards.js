@@ -1,46 +1,4 @@
----
-title: Hover Cracker Animated Card
-description: Your first document
----
-{/* priview code  */}
-import {ComponentPreview} from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
-import { FirecrackerCard } from "../../codeWrittenText/buttonCode/cards"
-import FireCrackerAnimatedCard from "../../../src/app/components/AllAnimatedCards/FireCrackerAnimatedCard"
-
-
-## Overview
-
-The `FirecrackerCard` component is a visually appealing UI card that features a glowing and lifting effect when hovered. It’s designed to draw attention and add interactivity to your interface.
-
-Key features include:
-
-- **Title and Description**: Customizable title and description.
-- **Customizable Styles**: Easy to apply additional styles using the `className` prop.
-
-
-<ComponentPreview code={FirecrackerCard}>
-  <FireCrackerAnimatedCard></FireCrackerAnimatedCard>
-</ComponentPreview>
-
-## CLI Installation
-
-Ensure your project is using ShadCN and the custom UI system. Then run:
-
-```bash
-npx shadcn@latest add https://ui-cahi-ui.vercel.app/registry/basic-button.json
-
-```
-## Manual Installation
-
-To manually set up the `FirecrackerCard ` component in your project, follow these steps:
-
-1. Go to your `src` directory.
-2. Create a folder structure: `components/ui/FirecrackerCard`.
-3. Inside the `glowLiftCard` folder, create a file named `firecrackerCard.tsx`.
-4. Paste the following code into `firecrackerCard.tsx`.
-
-```tsx
-"use client";
+export const FirecrackerCard = `"use client"
 import React, { useState } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
@@ -126,8 +84,7 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
 
       {/* Keyframe Animations */}
       <style>
-        {`
-          @keyframes firecracker1 {
+        {@keyframes firecracker1 {
             0%   { top: 0; left: 0; }
             25%  { top: 0; left: 100%; transform: translate(-100%, 0); }
             50%  { top: 100%; left: 100%; transform: translate(-100%, -100%); }
@@ -171,42 +128,93 @@ const FirecrackerCard: React.FC<FirecrackerCardProps> = ({
           .animate-firecracker4 {
             animation: firecracker4 2s linear infinite;
           }
-        `}
+        }
       </style>
  </div>
   );
 };
 
 export default FirecrackerCard;
+`;
 
-```
+export const CracklingCard = `
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+import clsx from "clsx";
 
+// 1. Define card variants
+const cracklingCardVariants = cva(
+  "relative p-[3px] rounded-xl animate-border overflow-hidden",
+  {
+    variants: {
+      size: {
+        sm: "w-[200px] h-[140px]",
+        md: "w-[300px] h-[200px]",
+        lg: "w-[400px] h-[250px]",
+      },
+      variant: {
+        default: "bg-white text-black",
+        dark: "bg-gray-900 text-white",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      variant: "default",
+    },
+  }
+);
 
-## Usage
-Import and use the `FirecrackerCard ` component like this:
-```tsx
+// 2. Define props
+type CracklingCardProps = React.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof cracklingCardVariants> & {
+    title?: string;
+    description?: string;
+    animationDuration?: string;
+  };
 
-import FirecrackerCard from "@/components/ui/cards/glowLiftCard";
+// 3. Component
+const CracklingCard: React.FC<CracklingCardProps> = ({
+  title = "Crackling Border",
+  description = "This card has a sparkly moving border!",
+  size,
+  variant,
+  className,
+  animationDuration = "4s",
+  ...props
+}) => {
+  return (
+    <>
+      <div className={twMerge(clsx(cracklingCardVariants({ size, variant }), className))} {...props}>
+        <div className="w-full h-full rounded-xl flex flex-col items-center justify-center text-center px-4 py-6">
+          <h2 className="text-xl font-bold mb-2">{title}</h2>
+          <p className="text-sm">{description}</p>
+        </div>
+      </div>
 
-export default function App() {
-  return <firecrackerCard size="lg" variant="dark" animate="true" description="Hover or click to see the sparks fly!"
-        buttonLabel="Light It Up" />;
-}
+      {/* Dynamic animation styles */}
+      <style>{
+        @keyframes crackle-border {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-border {
+          background: linear-gradient(
+            270deg,
+            #ff00c8,
+            #00ffff,
+            #ff9900,
+            #ff00c8
+          );
+          background-size: 600% 600%;
+          animation: crackle-border  linear infinite;
+        }
+      }</style>
+    </>
+  );
+};
 
+export default CracklingCard;
 
-```
----
-
----
-
-## Props
-
-| **Prop**    | **Type**   | **Description**                                  | **Default**                                 | **props**         |
-|-------------|------------|--------------------------------------------------|---------------------------------------------|-------------------|
-| `size`     | `string`   | The size of the card                              | `"md"`                                      | `"sm"` `"md"` `"lg"`    |
-| `variant`     | `string`   | The color of the card                          | `"default"`                                 | `"default"` `"dark"` `"light"`  |
-| `animate`     | `string`   | The title displayed on the card                  | `"false"`                                 |     `"true"`            |
-| `description` | `string`   | 	The description text under the title          | `"Light it up"`                             |                   |
-| `buttonLabel` | `string`   | 	The description text under the button          | `"Hover or click to see the sparks fly!"`  |                   |
-| `className` | `string`   | 	Additional Tailwind classes for outer container | `""`                                        |                   |
----
+`;
