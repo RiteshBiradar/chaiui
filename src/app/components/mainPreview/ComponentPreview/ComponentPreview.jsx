@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Copy, Eye, Code2 } from "lucide-react";
-
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+import { useTheme } from "next-themes"; // or use your own theme system
+
 export function ComponentPreview({ code, children }) {
+  const { theme } = useTheme(); // 'light' or 'dark
   const [showCode, setShowCode] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -28,14 +30,15 @@ export function ComponentPreview({ code, children }) {
     `${baseButton} ${variants[variant] || ""}`;
 
   return (
-    <div className="border overflow-hidden  rounded-xl bg-muted/30 p-4 space-y-4">
+    <div className="border overflow-hidden rounded-xl bg-muted/30 p-4 space-y-4">
+      {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex gap-2 text-black dark:text-white">
+        <div className="flex gap-2">
           <button
             className={getButtonClass(!showCode ? "default" : "outline")}
             onClick={() => setShowCode(false)}>
-            <Eye className="w-4 h-4 mr-1 dark:text-white text-black" />
-            <span className="text-black dark:text-white"> Preview</span>
+            <Eye className="w-4 h-4 mr-1" />
+            Preview
           </button>
           <button
             className={getButtonClass(showCode ? "default" : "outline")}
@@ -47,7 +50,7 @@ export function ComponentPreview({ code, children }) {
 
         {showCode && (
           <button
-            className={getButtonClass("ghost") + " flex items-center"}
+            className={`${getButtonClass("ghost")} flex items-center`}
             onClick={handleCopy}>
             <Copy className="w-4 h-4" />
             <span className="sr-only">Copy code</span>
@@ -58,14 +61,22 @@ export function ComponentPreview({ code, children }) {
         )}
       </div>
 
+      {/* Content */}
       {showCode ? (
-        <pre className="bg-muted p-4 rounded-lg overflow-auto text-sm mt-1">
-          <code>
-            <SyntaxHighlighter language="jsx" style={oneDark}>
-              {code}
-            </SyntaxHighlighter>
-          </code>
-        </pre>
+        <div className="rounded-md overflow-hidden text-sm">
+          <SyntaxHighlighter
+            language="jsx"
+            style={oneDark}
+            customStyle={{
+              background: theme === "dark" ? "#1f242e" : "#ebebf4",
+              padding: "1rem",
+              borderRadius: "0.5rem",
+              margin: 0,
+            }}
+            codeTagProps={{ style: { textDecoration: "none" } }}>
+            {code}
+          </SyntaxHighlighter>
+        </div>
       ) : (
         <div className="mt-4">{children}</div>
       )}
