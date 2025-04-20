@@ -1,0 +1,147 @@
+---
+title: Testimonial Card
+description: A visually elegant, customizable component with optional Chai theme support.
+---
+
+import ShowTestimonialCard from "../../../src/app/components/ChaiThemed/ShowTestimonialCard"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { TestimonialCard } from "../../codeWrittenText/ChaiThemed/TestimonialCard"
+
+## Overview
+
+`Accordion` can be used for FAQ sections, help sections, and other collapsible content utilities since it is very flexible.
+
+<ComponentPreview code={TestimonialCard}>
+  <ShowTestimonialCard />
+</ComponentPreview>
+
+---
+
+## Installation
+
+### CLI Installation
+
+Make sure ShadCN UI and your custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/ not known
+```
+To provide the documentation for the `TestimonialCard` component similar to the structure of `Accordion.mdx`, we need to follow the same format and include relevant sections such as Overview, Installation, Manual Installation, Usage, and Props.
+
+Here's how the documentation for `TestimonialCard` would look:
+
+
+
+## Manual Installation
+
+To manually install the `TestimonialCard` component in your project, follow these steps:
+
+### 📁 1. Folder Structure
+
+Navigate to your project’s src directory and create the following folder structure:
+
+```bash
+src/
+└── components/
+    └── ui/
+        └── testimonialCard/
+            └── TestimonialCard.tsx
+```
+
+### 🧩 2. Create the Component File
+
+Inside `testimonialCard/`, create a new file called:
+
+```bash
+TestimonialCard.tsx
+```
+
+---
+
+### 🧾 3. Paste the Component Code
+
+Paste the following code into `TestimonialCard.tsx`:
+
+```tsx
+import React from "react";
+
+interface TestimonialCardProps {
+  name?: string;
+  role?: string;
+  testimonial?: string;
+  ChaiTheme?: boolean;
+}
+
+function TestimonialCard({
+  name = "John Doe",
+  role = "Software Engineer",
+  testimonial = "This is a default testimonial. It can be replaced with actual customer feedback.",
+  ChaiTheme = false
+}: TestimonialCardProps) {
+  return (
+    <div
+      className={`${
+        ChaiTheme
+          ? "bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50"
+          : "bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200"
+      } w-80 rounded-2xl shadow-md p-5 flex flex-col items-center justify-center`}
+    >
+      <div className="text-lg font-bold mb-2">{name}</div>
+      <div
+        className={`text-sm mb-4 ${
+          ChaiTheme
+            ? "text-amber-700 dark:text-amber-300"
+            : "text-gray-500 dark:text-neutral-400"
+        }`}
+      >
+        {role}
+      </div>
+      <div className="text-sm text-center">{testimonial}</div>
+    </div>
+  );
+}
+
+export default TestimonialCard;
+```
+
+---
+
+## Usage
+
+Import and use the `TestimonialCard` component like this:
+
+```tsx 
+import React from "react";
+import TestimonialCard from "../../../../registry/ui/chaiThemed/testimonialCard";
+
+function ShowTestimonialCard() {
+  return (
+    <div className="flex justify-center items-center gap-4 flex-wrap">
+      <TestimonialCard
+        name="Jane Smith"
+        role="Product Manager"
+        testimonial="This product has transformed the way we manage our projects. Highly recommended!"
+        ChaiTheme={true}
+      />
+      <TestimonialCard
+        name="Michael Brown"
+        role="UX Designer"
+        testimonial="The design is sleek and the functionality is top-notch. A great addition to our toolkit."
+        ChaiTheme={false}
+      />
+    </div>
+  );
+}
+
+export default ShowTestimonialCard;
+```
+
+## Props
+
+| **Prop**       | **Type**    | **Description**                                      | **Default**                                                  |
+|----------------|-------------|------------------------------------------------------|--------------------------------------------------------------|
+| `name`         | `string`    | Name of the person giving the testimonial            | `"John Doe"`                                                 |
+| `role`         | `string`    | Role or title of the person giving the testimonial    | `"Software Engineer"`                                        |
+| `testimonial`  | `string`    | The testimonial text                                 | `"This is a default testimonial. It can be replaced with actual customer feedback."` |
+| `ChaiTheme`    | `boolean`   | Whether to apply Chai-themed amber color styles      | `false`                                                      |
+

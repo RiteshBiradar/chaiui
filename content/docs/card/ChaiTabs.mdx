@@ -1,0 +1,165 @@
+---
+title: Chai Tabs
+description: A visually elegant, customizable card component with optional Chai theme support.
+---
+
+import ShowChaiTabs from "../../../src/app/components/ChaiThemed/ShowChaiTabs"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { ChaiTabsCode } from "../../codeWrittenText/ChaiThemed/ChaiTabCode"
+
+## Overview
+
+`Accordion` can be used for FAQ sections, help sections, and other collapsible content utilities since it is very flexible.
+
+<ComponentPreview code={ChaiTabsCode}>
+  <ShowChaiTabs />
+</ComponentPreview>
+
+---
+
+## Installation
+
+### CLI Installation
+
+Make sure ShadCN UI and your custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/ not known
+
+```
+
+## Manual Installation
+
+```mdx
+To manually install the `ChaiTabs` component in your project, follow these steps:
+```
+
+### 📁 1. Folder Structure
+
+Navigate to your project’s src directory and create the following folder structure:
+
+```
+    src/
+└── components/
+            └── ui/
+                    └── chaiTabs/
+                                └── ChaiTabs.tsx
+```
+### 🧩 2. Create the Component File
+
+Inside `chaiTabs/`, create a new file called:
+```
+ChaiTabs.tsx
+```
+--- 
+
+### 🧾 3. Paste the Component Code
+
+Paste the following code into `ChaiTabs.tsx`:
+
+```tsx
+import React, { useState } from "react";
+
+interface TabData {
+  title: string;
+  content: string;
+}
+
+interface ChaiTabsProps {
+  tabsData?: TabData[];
+  ChaiTheme?: boolean;
+}
+
+function ChaiTabs({
+  tabsData = [
+    { title: "Tab 1", content: "Description 1" },
+    { title: "Tab 2", content: "Description 2 " }
+  ],
+  ChaiTheme = false
+}: ChaiTabsProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div
+      className={`rounded-2xl p-4 md:p-6 w-full max-w-2xl mx-auto transition-all shadow-md min-h-[200px] flex flex-col ${ChaiTheme
+          ? "bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50"
+          : "bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200"
+      }`}
+    >
+      {/* Title Tabs */}
+      <div className="flex flex-wrap justify-center gap-2 sm:space-x-4 mb-6">
+        {tabsData.map((tab, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition-all border flex-grow sm:flex-grow-0 max-w-[200px] ${activeIndex === index
+                ? ChaiTheme
+                  ? "bg-amber-200 dark:bg-amber-600 border-amber-400 dark:border-amber-600 text-amber-900 dark:text-amber-50"
+                  : "bg-neutral-200 dark:bg-neutral-700 border-neutral-400 dark:border-neutral-600 text-black dark:text-white"
+                : ChaiTheme
+                ? "bg-transparent border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-300"
+                : "bg-transparent border-neutral-300 dark:border-neutral-700 text-gray-600 dark:text-gray-300"
+            }`}
+          >
+            {tab.title}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div
+        className={`text-center text-sm md:text-base leading-relaxed transition-opacity duration-300 ease-in-out flex-grow flex items-center justify-center p-4 ${ChaiTheme
+            ? "text-amber-700 dark:text-amber-200"
+            : "text-gray-800 dark:text-gray-300"
+        }`}
+      >
+        <p className="max-w-lg">{tabsData[activeIndex]?.content}</p>
+      </div>
+    </div>
+  );
+}
+
+export default ChaiTabs;
+```
+
+
+---
+
+## Usage
+
+Import and use the `ChaiTabs ` component like this:
+
+```tsx
+import ChaiTabs from "@/components/ui/chaiTabs/ChaiTabs";
+
+export default function App() {
+  return (
+    <div className="flex justify-center items-center gap-4 flex-wrap">
+      <ChaiTabs
+        tabsData={[
+          { title: "Masala Chai", content: "Masala chai is a spiced tea beverage made by brewing black tea with a mixture of aromatic spices and herbs." },
+          { title: "Brewing Tips", content: "For the perfect cup of chai, simmer your spices in water for 5-10 minutes before adding tea leaves and milk." },
+          { title: "Health Benefits", content: "Chai contains antioxidants from tea and anti-inflammatory compounds from spices like ginger and cinnamon." }
+        ]}
+        ChaiTheme={true}
+      />
+
+      <ChaiTabs
+        tabsData={[
+          { title: "Chai Varieties", content: "Beyond traditional masala chai, explore Kashmiri kahwa with saffron and almonds, Tibetan butter tea with yak butter." },
+          { title: "Chai Culture", content: "Chai is more than a beverage; it's a cultural institution in many countries." },
+          { title: "Modern Twists", content: "Contemporary chai innovations include chai lattes, chai-flavored ice cream, and chai-infused cocktails." }
+        ]}
+        ChaiTheme={false}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| tabsData  | `TabData[]` | `[{ title: "Tab 1", content: "Description 1" }, { title: "Tab 2", content: "Description 2" }]` | An array of objects containing the title and content for each tab. |
+| ChaiTheme | `boolean` | `false` | A boolean to enable or disable the Chai theme styling. |

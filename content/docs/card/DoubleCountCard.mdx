@@ -1,0 +1,168 @@
+---
+title: Duo Count Card
+description: A visually elegant, customizable component with optional Chai theme support.
+---
+
+
+import ShowDoubleCountCard from "../../../src/app/components/ChaiThemed/ShowDoubleCountCard"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { DoubleCountCode } from "../../codeWrittenText/ChaiThemed/DoubleCountCard"
+
+## Overview
+
+`Accordion` can be used for FAQ sections, help sections, and other collapsible content utilities since it is very flexible.
+
+<ComponentPreview code={DoubleCountCode}>
+  <ShowDoubleCountCard />
+</ComponentPreview>
+
+---
+
+## Installation
+
+### CLI Installation
+
+Make sure ShadCN UI and your custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/ not known
+```
+
+## Manual Installation
+
+To manually install the `DoubleCountCard` component in your project, follow these steps:
+
+### 📁 1. Folder Structure
+
+Navigate to your project’s src directory and create the following folder structure:
+
+```bash
+src/
+└── components/
+    └── ui/
+        └── doubleCountCard/
+            └── DoubleCountCard.tsx
+```
+
+### 🧩 2. Create the Component File
+
+Inside `doubleCountCard/`, create a new file called:
+
+```bash
+DoubleCountCard.tsx
+```
+
+---
+
+### 🧾 3. Paste the Component Code
+
+Paste the following code into `DoubleCountCard.tsx`:
+
+```tsx registry/ui/chaiThemed/doubleCountCard.tsx
+import React from "react";
+
+interface DoubleCountCardProps {
+  title?: string;
+  subtitle?: string;
+  count1?: number;
+  label1?: string;
+  count2?: number;
+  label2?: string;
+  ChaiTheme?: boolean;
+}
+
+function DoubleCountCard({
+  title = "Title",
+  subtitle = "SubTitle",
+  count1 = 0,
+  label1 = "Count1",
+  count2 = 0,
+  label2 = "Count2",
+  ChaiTheme = false
+}: DoubleCountCardProps) {
+  return (
+    <div
+      className={`${
+        ChaiTheme
+          ? "bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50"
+          : "bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200"
+      } w-60 rounded-2xl shadow-md p-5 flex flex-col items-center justify-center`}
+    >
+      <div className="text-lg font-bold mb-1">{title}</div>
+      <div
+        className={`text-sm mb-4 ${
+          ChaiTheme
+            ? "text-amber-700 dark:text-amber-300"
+            : "text-gray-500 dark:text-neutral-400"
+        }`}
+      >
+        {subtitle}
+      </div>
+      <div className="flex w-full justify-between px-2">
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-semibold">{count1}</span>
+          <span className="text-xs mt-1">{label1}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl font-semibold">{count2}</span>
+          <span className="text-xs mt-1">{label2}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default DoubleCountCard;
+```
+
+---
+
+## Usage
+
+Import and use the `DoubleCountCard` component like this:
+
+```tsx src/app/components/ChaiThemed/ShowDoubleCountCard.jsx
+import React from "react";
+import DoubleCountCard from "../../../../registry/ui/chaiThemed/doubleCountCard";
+
+function ShowDoubleCountCard() {
+  return (
+    <div className="flex justify-center items-center gap-4  flex-wrap">
+      <DoubleCountCard
+        title="Projects"
+        subtitle="Overview"
+        count1={132}
+        label1="Active"
+        count2={87}
+        label2="Completed"
+        ChaiTheme={true}
+      />
+      <DoubleCountCard
+        title="Projects"
+        subtitle="Overview"
+        count1={132}
+        label1="Active"
+        count2={87}
+        label2="Completed"
+        ChaiTheme={false}
+      />
+    </div>
+  );
+}
+
+export default ShowDoubleCountCard;
+```
+
+## Props
+
+| **Prop**     | **Type**    | **Description**                                      | **Default**                                                  |
+|--------------|-------------|------------------------------------------------------|--------------------------------------------------------------|
+| `title`      | `string`    | Title text shown at the top of the card              | `"Title"`                                                   |
+| `subtitle`   | `string`    | Subtitle text shown below the title                   | `"SubTitle"`                                                |
+| `count1`     | `number`    | First count value to display                         | `0`                                                         |
+| `label1`     | `string`    | Label for the first count                            | `"Count1"`                                                  |
+| `count2`     | `number`    | Second count value to display                        | `0`                                                         |
+| `label2`     | `string`    | Label for the second count                           | `"Count2"`                                                  |
+| `ChaiTheme`  | `boolean`   | Whether to apply Chai-themed amber color styles      | `false`                                                      |
+```
+
