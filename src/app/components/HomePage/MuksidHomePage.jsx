@@ -36,9 +36,9 @@ const MuksidHomePage = () => {
         <GridBackground />
       </div>
 
-      <div className="w-screen absolute left-0 bottom-0">
+      {/* <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
-      </div>
+      </div> */}
 
       <motion.div
         animate={{
