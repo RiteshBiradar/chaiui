@@ -9,8 +9,8 @@ const MuksidHomePage = dynamic(() => import("../../app/components/HomePage/Muksi
 export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col justify-center text-center">
-      <Home></Home>
-      {/* <MuksidHomePage /> */}
+      {/* <Home></Home> */}
+      <MuksidHomePage />
     </main>
   );
 }

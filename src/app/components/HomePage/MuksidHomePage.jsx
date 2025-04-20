@@ -5,6 +5,7 @@ import GridBackground from "./GridBackground";
 import StarRating from "./StarRating";
 import BetaNav from "../BetaTsting/BetaNav";
 import Link from "next/link";
+import FlipCard from "registry/ui/animatedCards/FlipAnimatedCard";
 const MuksidHomePage = () => {
   const colors = [
     "#e8953f", // amber-orange
@@ -36,7 +37,14 @@ const MuksidHomePage = () => {
       <div className="w-screen absolute left-0 bottom-0">
         <BetaNav />
       </div>
-    
+
+      <div className="absolute left-40 bottom-30 rotate-15 scale-65 none">
+        <FlipCard
+          front={<div className="text-xl font-bold">Hello</div>}
+          back={<div className="text-xl font-bold">Goodbye</div>}
+        />
+      </div>
+
       {/* right side of the code  */}
       <div className="flex flex-col justify-center items-center m-3">
         <h1 className=" text-4xl sm:text-6xl xl:text-7xl  font-bold dark:text-white text-gray-950 leading-tight">
