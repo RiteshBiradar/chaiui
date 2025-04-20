@@ -161,7 +161,7 @@ const MuksidHomePage = () => {
 
           {/* GitHub button with icon */}
           <Link
-            href="https://vercel.com/muksiduzs-projects/ui-cahi-ui/7RmWdnxhJzfznEtNAoEy4NaVdn77?filter=errors"
+            href="https://github.com/Muksiduz/ui.chaiui"
             className="cursor-pointer flex items-center justify-center gap-2 bg-[#1c3752] hover:bg-[#163048] text-white px-4 xl:px-6 py-3 text-lg rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
