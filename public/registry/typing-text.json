@@ -1,0 +1,13 @@
+{
+  "name": "typing-text",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\"\r\nimport React, { useEffect, useState } from 'react';\r\n\r\ntype TypingAnimationProps = {\r\n  words: string[];\r\n  typingSpeed?: number;  \r\n  switchDelay?: number;  \r\n};\r\n\r\nconst TypingAnimation: React.FC<TypingAnimationProps> = ({\r\n  words,\r\n  typingSpeed = 150,\r\n  switchDelay = 1000,\r\n}) => {\r\n  const [wordIndex, setWordIndex] = useState(0);\r\n  const [showText, setShowText] = useState('');\r\n\r\n  useEffect(() => {\r\n    let charIndex = 0;\r\n    const currentWord = words[wordIndex];\r\n    const interval = setInterval(() => {\r\n      if (charIndex <= currentWord.length) {\r\n        setShowText(currentWord.slice(0, charIndex));\r\n        charIndex++;\r\n      } else {\r\n        clearInterval(interval);\r\n        setTimeout(() => {\r\n          setWordIndex((prev) => (prev + 1) % words.length);\r\n        }, switchDelay);\r\n      }\r\n    }, typingSpeed);\r\n\r\n    return () => clearInterval(interval);\r\n  }, [wordIndex, words, typingSpeed, switchDelay]);\r\n\r\n  return (\r\n    <div className=\"text-4xl sm:text-5xl text-white font-normal\">\r\n      I'm a{' '}\r\n      <span className=\"text-[#FC6D6D] font-semibold border-r-2 border-[#FC6D6D] pr-1 animate-blink\">\r\n        {showText}\r\n      </span>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default TypingAnimation;\r\n",
+      "path": "ui/textAnimations/typingAnimation.tsx",
+      "target": "components/ui/textAnimations/typingAnimation.tsx"
+    }
+  ]
+}

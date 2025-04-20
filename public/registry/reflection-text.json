@@ -1,0 +1,13 @@
+{
+  "name": "reflection-text",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from 'react';\r\n\r\ntype ReflectionProps = {\r\n  text: string;\r\n  fontSize?: string;\r\n  textColor?: string;\r\n  additionalStyles?: string;\r\n};\r\n\r\nconst Reflection: React.FC<ReflectionProps> = ({\r\n  text,\r\n  fontSize = '6xl',\r\n  textColor = 'white',\r\n  additionalStyles = '',\r\n}) => {\r\n  return (\r\n    <div className={`flex items-center justify-center h-screen w-full ${additionalStyles}`}>\r\n      <div className=\"text-center\">\r\n        <h1 className={`text-${textColor} text-${fontSize} font-bold`}>{text}</h1>\r\n\r\n        <h1\r\n          className={`text-${textColor} text-${fontSize} font-bold mt-0.5 transform scale-y-[-1] opacity-50`}\r\n          style={{\r\n            maskImage: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',\r\n            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',\r\n            filter: 'blur(1px)',\r\n          }}\r\n        >\r\n          {text}\r\n        </h1>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Reflection;\r\n",
+      "path": "ui/textAnimations/reflection.tsx",
+      "target": "components/ui/textAnimations/reflection.tsx"
+    }
+  ]
+}

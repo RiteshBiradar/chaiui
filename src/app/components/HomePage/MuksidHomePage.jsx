@@ -6,6 +6,8 @@ import StarRating from "./StarRating";
 import BetaNav from "../BetaTsting/BetaNav";
 import Link from "next/link";
 import FlipCard from "registry/ui/animatedCards/FlipAnimatedCard";
+import FeatureCard from "registry/ui/chaiThemed/featureCard";
+import Reflection from "registry/ui/textAnimations/reflection";
 const MuksidHomePage = () => {
   const colors = [
     "#e8953f", // amber-orange
@@ -38,12 +40,90 @@ const MuksidHomePage = () => {
         <BetaNav />
       </div>
 
-      <div className="absolute left-40 bottom-30 rotate-15 scale-65 none">
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+          opacity: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+        className="absolute left-10 bottom-100 rotate-15 scale-65 hover:scale-75 ">
         <FlipCard
-          front={<div className="text-xl font-bold">Hello</div>}
-          back={<div className="text-xl font-bold">Goodbye</div>}
+          front={<div className="text-2xl font-bold">Welcome to ChaiUI</div>}
+          back={
+            <div className="text-xl font-bold">
+              Build faster with our hot chaiui components
+            </div>
+          }
         />
-      </div>
+      </motion.div>
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+          opacity: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+        className="absolute left-40 bottom-30 rotate-15 scale-65 cursor-pointer hover:scale-75">
+        <FeatureCard
+          title="Chai Feature"
+          description="This feature card has the warm ChaiTheme colors applied for a cozy feel."
+          icon="☕"
+          ChaiTheme={false}
+        />
+        <div className="w-60 h-60 rounded-lg absolute left-8 bottom-[-10] -z-10 bg-white"></div>
+      </motion.div>
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+          opacity: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+        className="absolute right-10 bottom-0 -rotate-20 scale-65 cursor-pointer ">
+        <Reflection
+          text="ChaiUI"
+          fontSize="8xl"
+          textColor="gray-400"
+          reflectionOpacity={30}
+        />
+      </motion.div>
+      <motion.div
+        animate={{
+          y: [0, -10, 0],
+          opacity: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+        className="absolute right-30 bottom-40 -rotate-20 scale-65 cursor-pointer ">
+        <span className=" text-8xl font-black dark:text-chai-dark drop-shadow-[3px_3px_1px_#b07a42]">
+          UI{" "}
+          <motion.div
+            animate={{ y: ["100%", "-100%"] }}
+            transition={{
+              duration: 0.6,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeOut",
+            }}
+            className="  absolute top-[-20] right-2 w-[20px] h-[20px] rounded-full
+                  bg-[linear-gradient(360deg,_rgba(254,115,1,1),_rgba(255,255,255,1))]
+                  dark:bg-[linear-gradient(360deg,_rgba(141,64,2,1),_rgba(255,255,255,1))]
+                  "></motion.div>
+        </span>
+      </motion.div>
 
       {/* right side of the code  */}
       <div className="flex flex-col justify-center items-center m-3">
@@ -51,7 +131,7 @@ const MuksidHomePage = () => {
           Build Faster With
           <br />
           <span className="dark:text-white text-gray-950">
-            Our hot{" "}
+            Our{" "}
             <motion.span
               className="font-bold"
               animate={{ color: colors[colorIndex] }}
@@ -61,7 +141,7 @@ const MuksidHomePage = () => {
                 repeat: Infinity,
                 repeatType: "mirror",
               }}>
-              ChaiUI Components
+              ChaiUI Component's
             </motion.span>
           </span>
         </h1>

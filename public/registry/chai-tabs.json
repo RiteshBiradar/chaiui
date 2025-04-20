@@ -1,0 +1,13 @@
+{
+  "name": "chai-tabs",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\"\r\nimport React, { useState } from \"react\";\r\n\r\ninterface TabData {\r\n  title: string;\r\n  content: string;\r\n}\r\n\r\ninterface ChaiTabsProps {\r\n  tabsData?: TabData[];\r\n  ChaiTheme?: boolean;\r\n}\r\n\r\nfunction ChaiTabs({\r\n  tabsData = [\r\n    { title: \"Tab 1\", content: \"Description 1\" },\r\n    { title: \"Tab 2\", content: \"Description 2 \" }\r\n  ],\r\n  ChaiTheme = false\r\n}: ChaiTabsProps) {\r\n  const [activeIndex, setActiveIndex] = useState(0);\r\n\r\n  return (\r\n    <div\r\n      className={`rounded-2xl p-4 md:p-6 w-full max-w-2xl mx-auto transition-all shadow-md min-h-[200px] flex flex-col ${\r\n        ChaiTheme\r\n          ? \"bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50\"\r\n          : \"bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200\"\r\n      }`}\r\n    >\r\n      {/* Title Tabs */}\r\n      <div className=\"flex flex-wrap justify-center gap-2 sm:space-x-4 mb-6\">\r\n        {tabsData.map((tab, index) => (\r\n          <button\r\n            key={index}\r\n            onClick={() => setActiveIndex(index)}\r\n            className={`px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition-all border flex-grow sm:flex-grow-0 max-w-[200px] ${\r\n              activeIndex === index\r\n                ? ChaiTheme\r\n                  ? \"bg-amber-200 dark:bg-amber-600 border-amber-400 dark:border-amber-600 text-amber-900 dark:text-amber-50\"\r\n                  : \"bg-neutral-200 dark:bg-neutral-700 border-neutral-400 dark:border-neutral-600 text-black dark:text-white\"\r\n                : ChaiTheme\r\n                ? \"bg-transparent border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-300\"\r\n                : \"bg-transparent border-neutral-300 dark:border-neutral-700 text-gray-600 dark:text-gray-300\"\r\n            }`}\r\n          >\r\n            {tab.title}\r\n          </button>\r\n        ))}\r\n      </div>\r\n\r\n      {/* Tab Content */}\r\n      <div\r\n        className={`text-center text-sm md:text-base leading-relaxed transition-opacity duration-300 ease-in-out flex-grow flex items-center justify-center p-4 ${\r\n          ChaiTheme\r\n            ? \"text-amber-700 dark:text-amber-200\"\r\n            : \"text-gray-800 dark:text-gray-300\"\r\n        }`}\r\n      >\r\n        <p className=\"max-w-lg\">{tabsData[activeIndex]?.content}</p>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default ChaiTabs;\r\n",
+      "path": "ui/chaiThemed/chaiTabs.tsx",
+      "target": "components/ui/chaiThemed/chaiTabs.tsx"
+    }
+  ]
+}

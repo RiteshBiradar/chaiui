@@ -1,0 +1,13 @@
+{
+  "name": "feature-card",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\n\r\ninterface FeatureCardProps {\r\n  title?: string;\r\n  description?: string;\r\n  icon?: string;\r\n  ChaiTheme?: boolean;\r\n}\r\n\r\nfunction FeatureCard({\r\n  title = \"Feature Title\",\r\n  description = \"Default feature description that explains what this feature does in detail.\",\r\n  icon = \"✨\",\r\n  ChaiTheme = false\r\n}: FeatureCardProps) {\r\n  return (\r\n    <div\r\n      className={`${\r\n        ChaiTheme\r\n          ? \"bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50\"\r\n          : \"bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200\"\r\n      } \r\n      feature-card rounded-2xl p-6 shadow-md group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-64 h-64 flex flex-col`}\r\n    >\r\n      {/* Icon */}\r\n      <div\r\n        className={`${\r\n          ChaiTheme ? \"bg-amber-100 dark:bg-amber-800\" : \"bg-neutral-100 dark:bg-neutral-700\"\r\n        } feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105`}\r\n      >\r\n        {icon}\r\n      </div>\r\n\r\n      {/* Title */}\r\n      <h3\r\n        className={`text-xl font-bold mb-2 ${\r\n          ChaiTheme ? \"text-amber-900 dark:text-amber-100\" : \"\"\r\n        }`}\r\n      >\r\n        {title}\r\n      </h3>\r\n\r\n      {/* Description */}\r\n      <p\r\n        className={`text-sm flex-grow ${\r\n          ChaiTheme\r\n            ? \"text-amber-700 dark:text-amber-300\"\r\n            : \"text-neutral-600 dark:text-neutral-400\"\r\n        }`}\r\n      >\r\n        {description}\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default FeatureCard;\r\n",
+      "path": "ui/chaiThemed/featureCard.tsx",
+      "target": "components/ui/chaiThemed/featureCard.tsx"
+    }
+  ]
+}

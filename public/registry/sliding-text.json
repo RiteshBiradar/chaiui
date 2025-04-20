@@ -1,0 +1,13 @@
+{
+  "name": "sliding-text",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\n\r\ntype SlidingTextProps = {\r\n  text: string;\r\n  duration?: string; \r\n  gradientFrom?: string; \r\n  gradientTo?: string;   \r\n};\r\n\r\nconst SlidingText: React.FC<SlidingTextProps> = ({\r\n  text,\r\n  duration = \"10s\",\r\n  gradientFrom = \"blue-500\",\r\n  gradientTo = \"green-400\",\r\n}) => {\r\n  return (\r\n    <div className=\"flex justify-center items-center\">\r\n      <div className=\"overflow-hidden relative w-full\">\r\n        <div\r\n          className={`text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-${gradientFrom} to-${gradientTo} animate-slide`}\r\n        >\r\n          <h1 className=\"whitespace-nowrap\">{text}</h1>\r\n        </div>\r\n      </div>\r\n\r\n      <style>\r\n        {`\r\n          @keyframes slide {\r\n            0% {\r\n              transform: translateX(-100%);\r\n            }\r\n            100% {\r\n              transform: translateX(100%);\r\n            }\r\n          }\r\n\r\n          .animate-slide {\r\n            animation: slide ${duration} linear infinite;\r\n          }\r\n        `}\r\n      </style>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default SlidingText;\r\n",
+      "path": "ui/textAnimations/sliding.tsx",
+      "target": "components/ui/textAnimations/sliding.tsx"
+    }
+  ]
+}

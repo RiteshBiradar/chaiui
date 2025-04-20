@@ -1,0 +1,13 @@
+{
+  "name": "solo-count-card",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import React, { ReactNode } from \"react\";\r\n\r\ninterface SoloCountCardProps {\r\n  icon?: ReactNode;\r\n  label?: string;\r\n  count?: number;\r\n  ChaiTheme?: boolean;\r\n}\r\n\r\nfunction SoloCountCard({\r\n  icon = null,\r\n  label = \"Count Text\",\r\n  count = 0,\r\n  ChaiTheme = false\r\n}: SoloCountCardProps) {\r\n  return (\r\n    <div\r\n      className={`${\r\n        ChaiTheme\r\n          ? \"bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50\"\r\n          : \"bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200\"\r\n      } w-56 rounded-2xl shadow-md p-4 flex items-center`}\r\n    >\r\n      {icon && (\r\n        <div className=\"w-10 h-10 flex items-center justify-center rounded-lg mr-4 bg-amber-100 dark:bg-amber-800\">\r\n          {icon}\r\n        </div>\r\n      )}\r\n      <div>\r\n        <div className={`text-sm ${ChaiTheme ? \"text-amber-700 dark:text-amber-300\" : \"text-gray-500 dark:text-neutral-400\"}`}>{label}</div>\r\n        <div className=\"text-2xl font-semibold\">{count}</div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default SoloCountCard;\r\n",
+      "path": "ui/chaiThemed/soloCountCard.tsx",
+      "target": "components/ui/chaiThemed/soloCountCard.tsx"
+    }
+  ]
+}
