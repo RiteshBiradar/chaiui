@@ -1,0 +1,237 @@
+---
+title: Course Card
+description: A visually elegant, customizable component with optional Chai theme support.
+---
+
+import ShowCourseCard from "../../../src/app/components/ChaiThemed/ShowCourseCard"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { CourseCardCode } from "../../codeWrittenText/ChaiThemed/CourseCard"
+
+## Overview
+
+`Accordion` can be used for FAQ sections, help sections, and other collapsible content utilities since it is very flexible.
+
+<ComponentPreview code={CourseCardCode}>
+  <ShowCourseCard />
+</ComponentPreview>
+
+---
+
+## Installation
+
+### CLI Installation
+
+Make sure ShadCN UI and your custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/ not known
+```
+
+
+## Manual Installation
+
+To manually install the `CourseCard` component in your project, follow these steps:
+
+### 📁 1. Folder Structure
+
+Navigate to your project’s src directory and create the following folder structure:
+
+```plaintext
+src/
+└── components/
+    └── ui/
+        └── courseCard/
+            └── CourseCard.tsx
+```
+
+### 🧩 2. Create the Component File
+
+Inside `courseCard/`, create a new file called:
+
+```plaintext
+CourseCard.tsx
+```
+
+---
+
+### 🧾 3. Paste the Component Code
+
+Paste the following code into `CourseCard.tsx`:
+
+```tsx
+import React from "react";
+
+interface CourseCardProps {
+  title?: string;
+  subtitle?: string;
+  desc?: string;
+  tags?: string[];
+  startDate?: string;
+  duration?: string;
+  price?: number;
+  originalPrice?: number;
+  discount?: string;
+  img?: string;
+  link?: string;
+  ChaiTheme?: boolean;
+}
+
+function CourseCard({
+  title = "Course Title",
+  subtitle = "Course Subtitle",
+  desc = "This is a brief course description that gets clamped to five lines for consistent and clean UI design. It gives a professional look and maintains layout integrity.",
+  tags = ["Python", "TensorFlow", "Pandas"],
+  startDate = "Starts April 12, 2025",
+  duration = "6 months",
+  price = 6999,
+  originalPrice = 8999,
+  discount = "Save 22%",
+  img = "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
+  link = "#",
+  ChaiTheme = false
+}: CourseCardProps) {
+  return (
+    <div
+      className={`${ChaiTheme
+          ? "bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50"
+          : "bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200"
+        }
+        w-72 shadow-md rounded-2xl overflow-hidden
+        transition-transform duration-200 group hover:scale-101 hover:shadow-lg flex flex-col`}
+    >
+      {/* Image with fixed aspect ratio */}
+      <div className="aspect-[4/3] -translate-y-8 w-full overflow-hidden">
+        <img
+          src={img}
+          alt="course"
+          className="object-cover w-full h-full"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-4 pt-0 flex-col gap- flex-grow">
+        {/* Tags */}
+        <div className="flex flex-wrap gap-0">
+          {tags.map((tag, i) => (
+            <span
+              key={i}
+              className={`text-xs px-2 ptunded-full font-medium
+              ${ChaiTheme
+                  ? "bg-amber-200/50 dark:bg-amber-800/40 text-amber-800 dark:text-amber-100"
+                  : "bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300"
+                }`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Title + Subtitle */}
+        <div className="-translate-y-5">
+          <h2 className="text-base pt-0 font-bold line-clamp-1">{title}</h2>
+          <p className="-translate-y-3 line-clamp-1 text-sm pt-0  opacity-80">{subtitle}</p>
+        </div>
+
+        {/* Date & Duration */}
+        <div className="flex items-center pt-0 -translate-y-9 justify-between text-xs text-gray-500 dark:text-gray-400">
+          <span>📅 {startDate}</span>
+          <span>⏳ {duration}</span>
+        </div>
+
+        {/* Description */}
+        <p className={`text-xs line-clamp-3 leading-relaxed pt-0 -translate-y-9
+          ${ChaiTheme ? "text-amber-700 dark:text-amber-300" : "text-gray-600 dark:text-gray-300"}`}>
+          {desc}
+        </p>
+
+        {/* Price & CTA */}
+        <div className="pt-2 mt-auto">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-lg font-semibold">
+              ₹{price} <span className="line-through text-sm text-gray-400 ml-1">₹{originalPrice}</span>
+            </span>
+            <span className="text-sm text-green-600 dark:text-green-400 font-medium">{discount}</span>
+          </div>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block w-full text-center py-2 text-sm font-medium rounded-xl transition
+              ${ChaiTheme
+                ? "bg-amber-600 hover:bg-amber-700 text-white"
+                : "bg-neutral-800 hover:bg-neutral-900 text-white"
+              }`}
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CourseCard;
+```
+
+---
+
+## Usage
+
+Import and use the `CourseCard` component like this:
+
+```tsx
+import CourseCard from "@/components/ui/courseCard/CourseCard";
+
+export default function App() {
+  return (
+    <div className="flex justify-center items-center gap-4 flex-wrap">
+      <CourseCard
+        title="Master the Art of Tea Blending"
+        subtitle="From Leaf to Cup"
+        desc="Dive deep into the world of artisanal tea crafting. Learn how to identify, blend, and brew exquisite teas from around the globe. Ideal for tea lovers and aspiring tea sommeliers."
+        tags={["Green Tea", "Black Tea", "Herbal", "+1"]}
+        startDate="Starts April 12, 2025"
+        duration="6 months"
+        price={6999}
+        originalPrice={8999}
+        discount="Save 22%"
+        img="https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=600"
+        link="https://your-tea-blending-course.com"
+      />
+
+      <CourseCard
+        title="Tea Ceremony & Culture Bootcamp"
+        subtitle="Traditions, Rituals & Brewing Mastery"
+        desc="Explore the elegance and mindfulness of tea ceremonies across cultures. This immersive course covers Japanese, Chinese, and British traditions with hands-on guidance and live sessions."
+        tags={["Matcha", "Chai", "Oolong"]}
+        startDate="Starts May 5, 2025"
+        duration="4 months"
+        price={4999}
+        originalPrice={7499}
+        discount="Save 33%"
+        img="https://images.pexels.com/photos/13737048/pexels-photo-13737048.jpeg?auto=compress&cs=tinysrgb&w=600"
+        link="https://your-tea-ceremony-course.com"
+        ChaiTheme={true}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| **Prop**        | **Type**    | **Description**                                      | **Default**                                                  |
+|-----------------|-------------|------------------------------------------------------|--------------------------------------------------------------|
+| `title`         | `string`    | Title text shown at the top of the card             | `"Course Title"`                                             |
+| `subtitle`      | `string`    | Subtitle text shown below the title                  | `"Course Subtitle"`                                           |
+| `desc`          | `string`    | Description text shown in the card                   | `"This is a brief course description..."`                    |
+| `tags`          | `string[]`  | Array of tags to display in the card                 | `["Python", "TensorFlow", "Pandas"]`                          |
+| `startDate`     | `string`    | Start date of the course                             | `"Starts April 12, 2025"`                                     |
+| `duration`      | `string`    | Duration of the course                              | `"6 months"`                                                  |
+| `price`         | `number`    | Current price of the course                         | `6999`                                                        |
+| `originalPrice` | `number`    | Original price of the course                        | `8999`                                                        |
+| `discount`      | `string`    | Discount text to display                             | `"Save 22%"`                                                  |
+| `img`           | `string`    | URL of the image to display in the card             | `"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600"` |
+| `link`          | `string`    | URL to redirect when the "Learn More" button is clicked | `"#"`                                                        |
+| `ChaiTheme`     | `boolean`   | Whether to apply Chai-themed amber color styles      | `false`                                                      |
+```

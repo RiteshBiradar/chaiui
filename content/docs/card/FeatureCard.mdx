@@ -1,0 +1,146 @@
+---
+title: Feature Card
+description: A visually elegant, customizable component with optional Chai theme support.
+---
+
+
+import ShowFeatureCard from "../../../src/app/components/ChaiThemed/ShowFeatureCard"
+import { ComponentPreview } from "../../../src/app/components/mainPreview/ComponentPreview/ComponentPreview"
+import { FeatureCardCode } from "../../codeWrittenText/ChaiThemed/FeatureCard"
+
+## Overview
+
+`Accordion` can be used for FAQ sections, help sections, and other collapsible content utilities since it is very flexible.
+
+<ComponentPreview code={FeatureCardCode}>
+  <ShowFeatureCard />
+</ComponentPreview>
+
+---
+
+
+## Installation
+
+### CLI Installation
+
+Make sure ShadCN UI and your custom UI system are set up in your project. Then run:
+
+```bash
+npx shadcn@latest add https://ui-cahi-ui.vercel.app/ not known
+```
+
+## Manual Installation
+
+To manually install the `FeatureCard` component in your project, follow these steps:
+
+### 📁 1. Folder Structure
+
+Navigate to your project’s src directory and create the following folder structure:
+
+```bash
+src/
+└── components/
+    └── ui/
+        └── featureCard/
+            └── FeatureCard.tsx
+```
+
+### 🧩 2. Create the Component File
+
+Inside `featureCard/`, create a new file called:
+
+```bash
+FeatureCard.tsx
+```
+
+---
+
+### 🧾 3. Paste the Component Code
+
+Paste the following code into `FeatureCard.tsx`:
+
+```tsx 
+import React from "react";
+
+interface FeatureCardProps {
+  title?: string;
+  description?: string;
+  icon?: string;
+  ChaiTheme?: boolean;
+}
+
+function FeatureCard({
+  title = "Feature Title",
+  description = "Default feature description that explains what this feature does in detail.",
+  icon = "✨",
+  ChaiTheme = false
+}: FeatureCardProps) {
+  return (
+    <div
+      className={`${
+        ChaiTheme
+          ? "bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-50"
+          : "bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200"
+      } w-60 rounded-2xl shadow-md p-5 flex flex-col items-center justify-center`}
+    >
+      <div className="text-3xl mb-2">{icon}</div>
+      <div className="text-lg font-bold mb-1">{title}</div>
+      <div
+        className={`text-sm mb-4 ${
+          ChaiTheme
+            ? "text-amber-700 dark:text-amber-300"
+            : "text-gray-500 dark:text-neutral-400"
+        }`}
+      >
+        {description}
+      </div>
+    </div>
+  );
+}
+
+export default FeatureCard;
+```
+
+---
+
+## Usage
+
+Import and use the `FeatureCard` component like this:
+
+```tsx 
+import React from "react";
+import FeatureCard from "../../../../registry/ui/chaiThemed/featureCard";
+
+function ShowFeatureCard() {
+  return (
+    <div className="flex justify-center items-center gap-4  flex-wrap">
+      <FeatureCard
+        title="Regular Feature"
+        description="This is a standard feature card without the ChaiTheme applied."
+        icon="⚡"
+        ChaiTheme={true}
+      />
+
+      <FeatureCard
+        title="Chai Feature"
+        description="This feature card has the warm ChaiTheme colors applied for a cozy feel."
+        icon="☕"
+        ChaiTheme={false}
+      />
+    </div>
+  );
+}
+
+export default ShowFeatureCard;
+```
+
+## Props
+
+| **Prop**       | **Type**    | **Description**                                      | **Default**                                                  |
+|----------------|-------------|------------------------------------------------------|--------------------------------------------------------------|
+| `title`        | `string`    | Title text shown at the top of the card              | `"Feature Title"`                                            |
+| `description`  | `string`    | Description text shown below the title                | `"Default feature description that explains what this feature does in detail."` |
+| `icon`         | `string`    | Icon to be displayed at the top of the card         | `"✨"`                                                       |
+| `ChaiTheme`    | `boolean`   | Whether to apply Chai-themed amber color styles      | `false`                                                      |
+```
+
