@@ -143,7 +143,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
-// 1. Define card variants
 const cracklingCardVariants = cva(
   "relative p-[3px] rounded-xl animate-border overflow-hidden",
   {
@@ -165,7 +164,7 @@ const cracklingCardVariants = cva(
   }
 );
 
-// 2. Define props
+
 type CracklingCardProps = React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof cracklingCardVariants> & {
     title?: string;
@@ -173,7 +172,7 @@ type CracklingCardProps = React.HTMLAttributes<HTMLDivElement> &
     animationDuration?: string;
   };
 
-// 3. Component
+
 const CracklingCard: React.FC<CracklingCardProps> = ({
   title = "Crackling Border",
   description = "This card has a sparkly moving border!",

@@ -1,11 +1,9 @@
 export const buttonCode = `
-// in components/ui/basicButton.tsx
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
-// 1. Define variants using cva
 const buttonVariants = cva(
   "px-4 cursor-pointer text-white font-bold rounded-lg shadow-md transition transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl",
   {
@@ -42,11 +40,9 @@ const buttonVariants = cva(
   }
 );
 
-// 2. Define props type using VariantProps + button props
 type AllButtonsProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
-// 3. Create a reusable button
 export default function Buttos({
   variant,
   size,

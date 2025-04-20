@@ -68,7 +68,7 @@ export function ComponentPreview({ code, children }) {
             language="jsx"
             style={oneDark}
             customStyle={{
-              background: theme === "dark" ? "#1f242e" : "#ebebf4",
+              background: "#1f242e",
               padding: "1rem",
               borderRadius: "0.5rem",
               margin: 0,
