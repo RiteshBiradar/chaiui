@@ -1,26 +1,33 @@
-# chaiui
+# ChaiUI Component Library
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+**ChaiUI** is a modern, reusable UI component library designed with **TailwindCSS** and built with **React**. It provides a set of flexible, customizable components that allow developers to quickly build beautiful interfaces with minimal effort.
 
-Run development server:
+---
+
+## 🛠 Tech Stack
+
+- **React.js**
+- **TailwindCSS** (for utility-first styling)
+- **TypeScript** (optional, if you're using TypeScript)
+- **Vite / CRA** (if applicable – update as needed)
+
+---
+
+## 📦 Installation
+
+To install **ChaiUI** in your project:
 
 ```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+npm install chaiui
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+---
 
-## Learn More
+### 📄Notes
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+- ChaiUI is still in active development – new components are being added regularly.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+- The library is highly customizable and intended to be easily extensible.
+
+- Documentation for each component is available in the /docs folder or via the hosted site once live
+---
